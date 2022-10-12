@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="05wwK0DA4uvUaCpv075d" name="Página-1">
-        <mxGraphModel dx="1317" dy="1586" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1390" dy="1768" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -117,7 +117,7 @@
                 <mxCell id="BrEinjW-ukixKmcARMXC-50" value="Envolve" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="140" y="920" width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="BrEinjW-ukixKmcARMXC-57" value="CategoriaDeVitimas" style="whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                <mxCell id="BrEinjW-ukixKmcARMXC-57" value="TipoCasualidade" style="whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
                     <mxGeometry x="40" y="1090" width="280" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="BrEinjW-ukixKmcARMXC-58" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;" parent="1" edge="1">
@@ -260,19 +260,19 @@
                 <mxCell id="SA3dniYWFba7JF4ocvw1-6" value="&lt;span style=&quot;border-bottom: 1px dotted&quot;&gt;km&lt;/span&gt;" style="ellipse;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
                     <mxGeometry x="370" y="320" width="100" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="SA3dniYWFba7JF4ocvw1-10" value="AcidentesSemVitima" style="shape=ext;margin=3;double=1;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                <mxCell id="SA3dniYWFba7JF4ocvw1-10" value="AcidentesSemCasualidades" style="shape=ext;margin=3;double=1;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
                     <mxGeometry x="610" y="700" width="280" height="120" as="geometry"/>
                 </mxCell>
-                <mxCell id="SA3dniYWFba7JF4ocvw1-11" value="AcidentesComVitima" style="shape=ext;margin=3;double=1;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                <mxCell id="SA3dniYWFba7JF4ocvw1-11" value="AcidentesComCasulalidades" style="shape=ext;margin=3;double=1;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
                     <mxGeometry x="35" y="700" width="280" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="SA3dniYWFba7JF4ocvw1-12" value="U" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=-60;fontSize=34;" parent="1" vertex="1">
                     <mxGeometry x="520" y="650" width="50" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="sentido" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                <mxCell id="3" value="sentido" style="ellipse;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
                     <mxGeometry x="470" y="320" width="100" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="tipoDeAcidente" style="ellipse;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                <mxCell id="4" value="tipoDeAcidente" style="ellipse;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
                     <mxGeometry x="570" y="320" width="100" height="40" as="geometry"/>
                 </mxCell>
             </root>
