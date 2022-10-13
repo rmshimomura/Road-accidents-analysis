@@ -1,31 +1,31 @@
-data,horario,n_da_ocorrencia,tipo_de_ocorrencia,km,trecho,sentido,tipo_de_acidente,automovel,bicicleta,caminhao,moto,onibus,outros,tracao_animal,transporte_de_cargas_especiais,trator_maquinas,utilitarios,ilesos,levemente_feridos,moderadamente_feridos,gravemente_feridos,mortos
-16/12/2021,12:07:42,231,Sem v�tima,"89,7",BR-381/MG,Decrescente,Colis�o traseira,1,0,1,0,0,0,0,0,0,0,2,0,0,0,0
-23/12/2021,19:11:29,495,Sem v�tima,89,BR-381/MG,Decrescente,Colis�o traseira,1,0,1,0,0,0,0,0,0,0,2,0,0,0,0
-24/12/2021,16:08:26,269,Sem v�tima,"80,3",BR-381/MG,Decrescente,Choque,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0
-30/12/2021,17:16:44,322,Sem v�tima,79,BR-381/MG,Decrescente,Choque,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-15/12/2021,11:52:46,190,Sem v�tima,"78,8",BR-381/MG,Crescente,Choque,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-30/12/2021,17:55:54,345,Sem v�tima,76,BR-381/MG,Crescente,Engavetamento,4,0,0,0,0,0,0,0,0,0,4,0,0,0,0
-15/12/2021,13:26:22,220,Sem v�tima,"75,2",BR-381/MG,Decrescente,Choque,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-16/12/2021,09:11:45,166,Sem v�tima,75,BR-381/MG,Crescente,Capotamento,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-30/12/2021,23:05:29,439,Sem v�tima,75,BR-381/MG,Crescente,Choque,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-16/12/2021,06:50:24,86,Sem v�tima,74,BR-381/MG,Decrescente,Engavetamento,2,0,0,0,0,0,0,0,0,1,3,0,0,0,0
-15/12/2021,22:14:10,437,Sem v�tima,73,BR-381/MG,Decrescente,Choque,1,0,0,0,0,0,0,0,0,0,2,0,0,0,0
-16/12/2021,12:35:23,239,Sem v�tima,"71,2",BR-381/MG,Decrescente,Choque,1,0,0,0,0,0,0,0,0,0,2,0,0,0,0
-30/12/2021,11:51:29,179,Sem v�tima,"71,2",BR-381/MG,Decrescente,Choque,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-15/12/2021,17:49:30,335,Sem v�tima,"69,4",BR-381/MG,Crescente,Choque,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-15/12/2021,12:22:20,200,Sem v�tima,"65,5",BR-381/MG,Crescente,Queda de moto,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
-24/12/2021,21:32:25,391,Sem v�tima,"65,5",BR-381/MG,Decrescente,Colis�o traseira,2,0,0,0,0,0,0,0,0,0,2,0,0,0,0
-30/12/2021,16:43:47,307,Sem v�tima,61,BR-381/MG,Decrescente,Choque,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-30/12/2021,18:42:51,354,Sem v�tima,61,BR-381/MG,Decrescente,Choque,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-31/12/2021,01:47:14,16,Sem v�tima,"57,2",BR-381/MG,Crescente,Choque,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-29/12/2021,16:10:32,288,Sem v�tima,50,BR-381/MG,Crescente,Colis�o traseira,2,0,0,0,0,0,0,0,0,0,2,0,0,0,0
-10/12/2021,20:50:25,417,Sem v�tima,43,BR-381/MG,Crescente,Choque,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-16/12/2021,14:49:20,290,Sem v�tima,"41,2",BR-381/MG,Crescente,Colis�o traseira,1,0,1,0,0,0,0,0,0,0,2,0,0,0,0
-23/12/2021,17:50:38,453,Sem v�tima,41,BR-381/MG,Crescente,Colis�o lateral no mesmo sentido,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-23/12/2021,12:14:33,283,Sem v�tima,38,BR-381/MG,Crescente,Colis�o traseira,1,0,1,0,0,0,0,0,0,0,2,0,0,0,0
-11/12/2021,01:34:39,11,Sem v�tima,"31,6",BR-381/MG,Crescente,Colis�o traseira,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
-16/12/2021,07:30:29,110,Sem v�tima,26,BR-381/MG,Crescente,Colis�o traseira,2,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-24/12/2021,03:44:40,49,Sem v�tima,"25,2",BR-381/MG,Crescente,Capotamento,1,0,0,0,0,0,0,0,0,0,3,0,0,0,0
-16/12/2021,13:33:16,258,Sem v�tima,25,BR-381/MG,Crescente,Colis�o lateral no mesmo sentido,0,0,1,0,0,1,0,0,0,0,2,0,0,0,0
-10/12/2021,21:11:00,424,Sem v�tima,"22,8",BR-381/MG,Crescente,Colis�o lateral no mesmo sentido,1,0,0,0,0,1,0,0,0,0,2,0,0,0,0
-11/12/2021,04:29:18,29,Sem v�tima,13,BR-381/MG,Decrescente,Colis�o traseira,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0
+data;horario;n_da_ocorrencia;tipo_de_ocorrencia;km;trecho;sentido;tipo_de_acidente;automovel;bicicleta;caminhao;moto;onibus;outros;tracao_animal;transporte_de_cargas_especiais;trator_maquinas;utilitarios;ilesos;levemente_feridos;moderadamente_feridos;gravemente_feridos;mortos
+14/01/2022;16:52:34;216;Sem v�tima;391,48;BR-364/MT;Decrescente;Sa�da de pista;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22/01/2022;12:58:22;155;Sem v�tima;382,88;BR-364/MT;Crescente;Colis�o traseira;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+21/01/2022;06:41:36;30;Sem v�tima;367,67;BR-364/MT;Crescente;Sa�da de pista;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23/01/2022;16:49:05;189;Sem v�tima;349,19;BR-364/MT;Crescente;Tombamento;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+17/01/2022;17:42:12;238;Sem v�tima;347,44;BR-364/MT;Crescente;Colis�o traseira;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+07/01/2022;18:00:12;221;Sem v�tima;346,96;BR-364/MT;Crescente;Sa�da de pista;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+17/01/2022;05:20:46;35;Com v�tima;313,37;BR-364/MT;Decrescente;Atropelamento de animal;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+14/01/2022;16:40:48;208;Sem v�tima;309,33;BR-364/MT;Crescente;Colis�o traseira;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+17/01/2022;14:30:34;185;Sem v�tima;307,37;BR-364/MT;Decrescente;Tombamento;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+13/01/2022;04:47:49;25;Sem v�tima;294,94;BR-364/MT;Decrescente;Sa�da de pista;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+17/01/2022;09:16:57;75;Sem v�tima;273,96;BR-364/MT;Crescente;Colis�o lateral no mesmo sentido;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22/01/2022;20:53:34;307;Sem v�tima;269,82;BR-364/MT;Decrescente;Colis�o lateral no mesmo sentido;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+16/01/2022;00:15:56;316;Sem v�tima;262,21;BR-364/MT;Decrescente;Queda de moto;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+11/01/2022;18:18:09;240;Sem v�tima;252,24;BR-364/MT;Crescente;Colis�o lateral no mesmo sentido;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+17/01/2022;12:34:09;169;Sem v�tima;239,27;BR-364/MT;Decrescente;Colis�o lateral no mesmo sentido;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+09/01/2022;18:52:47;202;Sem v�tima;234,38;BR-364/MT;Decrescente;Capotamento;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+21/01/2022;20:10:06;260;Sem v�tima;222,19;BR-364/MT;Decrescente;Sa�da de pista;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+12/01/2022;05:46:35;44;Sem v�tima;216,52;BR-364/MT;Decrescente;Sa�da de pista;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+11/01/2022;23:48:00;1588;AC02 - Acidente com VITIMA;11,00;BR-040/RJ;JF;Tombamento;;;1;;;;;;;;0;1;;;
+30/01/2022;22:44:00;3888;AC03 - Acidente sem VITIMA;11,00;BR-040/RJ;JF;Choque - Objeto Fixo;1;;;;;;;;;;1;;;;
+08/01/2022;14:00:00;1092;AC02 - Acidente com VITIMA;8,00;BR-040/RJ;JF;Choque - Objeto Fixo;1;;;;;;;;;;0;;1;1;
+29/01/2022;16:46:00;3743;AC02 - Acidente com VITIMA;7,00;BR-040/RJ;JF;Choque - Objeto Fixo;1;;;;;;;;;;0;1;;;
+30/01/2022;10:05:00;3808;AC02 - Acidente com VITIMA;7,00;BR-040/RJ;JF;Queda de Moto;;;;1;;;;;;;0;;1;;
+02/01/2022;09:29:00;143;AC02 - Acidente com VITIMA;4,00;BR-040/RJ;RJ;Capotamento;1;;;;;;;;;;0;;1;;
+02/01/2022;18:35:00;215;AC03 - Acidente sem VITIMA;4,00;BR-040/RJ;JF;Choque - Objeto Fixo;1;;;;;;;;;;1;;;;
+08/01/2022;11:41:00;1072;AC03 - Acidente sem VITIMA;4,00;BR-040/RJ;JF;Choque - Objeto Fixo;1;;;;;;;;;;1;;;;
+07/01/2022;08:49:00;877;AC03 - Acidente sem VITIMA;3,00;BR-040/RJ;RJ;Choque - Objeto Fixo;1;;;;;;;;;;1;;;;
+10/01/2022;12:40:00;1358;AC03 - Acidente sem VITIMA;3,00;BR-040/RJ;JF;Colis�o Traseira;2;;;;;;;;;;2;;;;
+02/01/2022;12:21:00;167;AC03 - Acidente sem VITIMA;1,00;BR-040/RJ;JF;Choque - Objeto Fixo;1;;;;;;;;;;1;;;;
+28/01/2022;13:03:00;3580;AC03 - Acidente sem VITIMA;1,00;BR-040/RJ;JF;Choque - Objeto Fixo;1;;;;;;;;;;1;;;;
