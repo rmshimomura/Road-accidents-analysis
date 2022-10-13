@@ -12,21 +12,21 @@ def convert_to_float(value):
         temp_value = temp_value[:-1]
     return float(temp_value)
 
-correct_encoding = get_encoding('./Data/demostrativo_acidentes_cro.csv')
+correct_encoding = get_encoding('C:\\Users\\shimo\\Documents\\BD\\Road-accidents-analysis\\Samples\\Acidentes.csv')
 
-_file = open('./Data/demostrativo_acidentes_cro.csv', 'r', encoding=f"{correct_encoding}")
+_file = open('C:\\Users\\shimo\\Documents\\BD\\Road-accidents-analysis\\Samples\\Acidentes.csv', 'r', encoding=f"{correct_encoding}")
 
 first_line = _file.readline()[:-1].split(';')
 
-fatal_accidents_file = open('./SQLs/fatal_accidents.sql', 'w', encoding='utf-8')
+fatal_accidents_file = open('C:\\Users\\shimo\\Documents\\BD\\Road-accidents-analysis\\Gerador_de_inserts\\SQLs\\fatal_accidents.sql', 'w', encoding='utf-8')
 
-not_fatal_accidents_file = open('./SQLs/not_fatal_accidents.sql', 'w', encoding='utf-8')
+not_fatal_accidents_file = open('C:\\Users\\shimo\\Documents\\BD\\Road-accidents-analysis\\Gerador_de_inserts\\SQLs\\not_fatal_accidents.sql', 'w', encoding='utf-8')
 
-vehicles_on_accident_file_no_victims = open('./SQLs/vehicles_on_accident_no_victims.sql', 'w', encoding='utf-8')
+vehicles_on_accident_file_no_victims = open('C:\\Users\\shimo\\Documents\\BD\\Road-accidents-analysis\\Gerador_de_inserts\\SQLs\\vehicles_on_accident_no_victims.sql', 'w', encoding='utf-8')
 
-vehicles_on_accident_file_with_victims = open('./SQLs/vehicles_on_accident_with_victims.sql', 'w', encoding='utf-8')
+vehicles_on_accident_file_with_victims = open('C:\\Users\\shimo\\Documents\\BD\\Road-accidents-analysis\\Gerador_de_inserts\\SQLs\\vehicles_on_accident_with_victims.sql', 'w', encoding='utf-8')
 
-victims_on_accident_file = open('./SQLs/victims_on_accident.sql', 'w', encoding='utf-8')
+victims_on_accident_file = open('C:\\Users\\shimo\\Documents\\BD\\Road-accidents-analysis\\Gerador_de_inserts\\SQLs\\victims_on_accident.sql', 'w', encoding='utf-8')
 
 available_vehicles = ['automovel', 'bicicleta', 'caminhao', 'moto', 'onibus', 'outros', 'tracao_animal', 'transporte_de_cargas_especiais', 'trator_maquinas', 'utilitarios']
 
@@ -54,7 +54,7 @@ for line in _file:
 
     accident_date = datetime.datetime.strptime(accident_date, '%d/%m/%Y')
 
-    if accident_date < datetime.datetime(2021, 2, 1) or accident_date > datetime.datetime(2021, 2, 28):
+    if accident_date < datetime.datetime(2022, 1, 1) or accident_date > datetime.datetime(2022, 1, 31):
         continue
 
     accident_date = line[0]

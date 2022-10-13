@@ -10,9 +10,9 @@ def convert_to_float(value):
         temp_value = temp_value[:-1]
     return float(temp_value)
 
-correct_encoding = get_encoding('./Data/icm_fev_2021.csv')
+correct_encoding = get_encoding('C:\\Users\\shimo\\Documents\\BD\\Road-accidents-analysis\\Samples\\CondicoesPavimento.csv')
 
-_file = open('./Data/icm_fev_2021.csv', 'r', encoding=f"{correct_encoding}")
+_file = open('C:\\Users\\shimo\\Documents\\BD\\Road-accidents-analysis\\Samples\\CondicoesPavimento.csv', 'r', encoding=f"{correct_encoding}")
 
 first_line = _file.readline()[:-1][3:].split(';')
 
@@ -20,7 +20,7 @@ roads = set()
 
 highways_parts = []
 
-highways_parts_file = open('./SQLs/highways_parts.sql', 'w')
+highways_parts_file = open('C:\\Users\\shimo\\Documents\\BD\\Road-accidents-analysis\\Gerador_de_inserts\\SQLs\\highways_parts.sql', 'w')
 
 for line in _file:
 
@@ -50,7 +50,7 @@ for line in _file:
 
 roads = sorted(roads, key=lambda x: (x[0], x[1]))
 
-roads_file = open('./SQLs/roads.sql', 'w')
+roads_file = open('C:\\Users\\shimo\\Documents\\BD\\Road-accidents-analysis\\Gerador_de_inserts\\SQLs\\roads.sql', 'w')
 
 for road in roads:
     roads_file.write(f"INSERT INTO rodovia values ('{road[0]}', '{road[1]}');\n")
