@@ -40,7 +40,10 @@ for line in _file:
     smallest_km = min(line[2], line[3])
     biggest_km = max(line[2], line[3])
 
-    highways_parts_file.write(f"INSERT INTO TrechoRodovia values ('{line[0]}', '{line[1]}', {smallest_km}, {biggest_km}, TO_DATE('{line[4]}', 'DD/MM/YYYY'), {line[5]}, {line[6]}, {line[7]});\n")
+    if [line[0], line[1], smallest_km, biggest_km, line[4]] not in highways_parts:
+
+        highways_parts.append([line[0], line[1], smallest_km, biggest_km, line[4]])
+        highways_parts_file.write(f"INSERT INTO TrechoRodovia values ('{line[0]}', '{line[1]}', {smallest_km}, {biggest_km}, TO_DATE('{line[4]}', 'DD/MM/YYYY'), {line[5]}, {line[6]}, {line[7]});\n")
 
     if (line[0], line[1]) not in roads:
         roads.add((line[0], line[1]))
