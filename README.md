@@ -35,7 +35,7 @@ Updates do projeto:
 ## Links
 
 - Modelo Relacional: https://github.com/rmshimomura/Road-accidents-analysis/blob/development/Modelos/Modelo_Relacional.pdf
-- Diagrama entidade relacionamento: https://github.com/rmshimomura/Road-accidents-analysis/blob/development/Diagramas/Modelo%20entidade%20relacionamento.png
+- Diagrama entidade relacionamento: https://github.com/rmshimomura/Road-accidents-analysis/blob/development/Modelos/Modelo%20entidade%20relacionamento.png
 
 ## Relatórios a serem produzidos
 
