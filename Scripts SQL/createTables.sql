@@ -41,7 +41,7 @@ CREATE TABLE AcidenteSemCasualidades(
     dataAcidente DATE NOT NULL,
     horario TIME NOT NULL,
     kmDoAcidente FLOAT NOT NULL,
-    sentido VARCHAR(10) NOT NULL,
+    sentido VARCHAR(30) NOT NULL,
     tipoDeAcidente VARCHAR(50) NOT NULL,
 
     CONSTRAINT PK_AcidenteSemCasualidades PRIMARY KEY (UF, nomeRodovia, kmInicial, kmFinal, dataAvaliacao, dataAcidente, horario, kmDoAcidente), 
@@ -57,7 +57,7 @@ CREATE TABLE AcidenteComCasualidades(
     dataAcidente DATE NOT NULL,
     horario TIME NOT NULL,
     kmDoAcidente FLOAT NOT NULL,
-    sentido VARCHAR(10) NOT NULL,
+    sentido VARCHAR(30) NOT NULL,
     tipoDeAcidente VARCHAR(50) NOT NULL,
 
     CONSTRAINT PK_AcidenteComCasualidades PRIMARY KEY (UF, nomeRodovia, kmInicial, kmFinal, dataAvaliacao, dataAcidente, horario, kmDoAcidente),
