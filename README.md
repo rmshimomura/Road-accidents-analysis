@@ -31,6 +31,7 @@ Decidimos apagar as seguintes colunas (do .csv de origem):
 Updates do projeto: 
 
 - 12/10/2022 - Tiramos a relação de acidentes e deixamos apenas suas subclasses devido à participação total da superclasse nas subclasses. (todo acidente possui ou não casualidades, por exemplo).
+- 19/10/2022 - Colocamos chaves artificiais nos modelos, a fim de facilitar as futuras buscas.
 
 ## Links
 
