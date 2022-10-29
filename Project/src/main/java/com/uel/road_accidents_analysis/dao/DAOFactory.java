@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class DAOFactory implements AutoCloseable {
+public abstract class DAOFactory implements AutoCloseable {
 
     protected Connection connection;
 
@@ -56,6 +56,8 @@ public class DAOFactory implements AutoCloseable {
         }
     }
     @SuppressWarnings("unused")
+    public abstract PostgresRodoviaDAO getRodoviaDAO();
+
     public void closeConnection() throws SQLException {
         try {
             connection.close();

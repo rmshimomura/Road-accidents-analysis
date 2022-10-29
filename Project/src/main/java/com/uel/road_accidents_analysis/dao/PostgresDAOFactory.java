@@ -8,5 +8,9 @@ public class PostgresDAOFactory extends DAOFactory {
         this.connection = connection;
     }
 
+    @Override
+    public PostgresRodoviaDAO getRodoviaDAO() {
+        return new PostgresRodoviaDAO(connection);
+    }
     // TODO implementar getAcidenteDAO retornando um novo PostgresAcidenteDAO(this.connection) alem do resto dos metodos
 }
