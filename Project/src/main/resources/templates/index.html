@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:each="rodovia : ${rodovias}">
+    <p th:text="${rodovia.nome}"></p>
+    <p th:text="${rodovia.UF}"></p>
+</div>
+
+<form action="#" th:action="create" method="post">
+    <button type="submit">chupa kaster</button>
+</form>
+
+</body>
+</html>
