@@ -15,19 +15,19 @@ public class CasualidadeNoAcidente {
         this.quantidade = quantidade;
     }
 
-    public Long getId_acidente() {
+    public Long getIdAcidente() {
         return id_acidente;
     }
 
-    public void setId_acidente(Long id_acidente) {
+    public void setIdAcidente(Long id_acidente) {
         this.id_acidente = id_acidente;
     }
 
-    public Long getId_tipo_casualidade() {
+    public Long getIdTipoCasualidade() {
         return id_tipo_casualidade;
     }
 
-    public void setId_tipo_casualidade(Long id_tipo_casualidade) {
+    public void setIdTipoCasualidade(Long id_tipo_casualidade) {
         this.id_tipo_casualidade = id_tipo_casualidade;
     }
 

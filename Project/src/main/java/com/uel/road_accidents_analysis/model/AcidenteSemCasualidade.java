@@ -34,11 +34,11 @@ public class AcidenteSemCasualidade {
         this.id = id;
     }
 
-    public Long getId_trecho() {
+    public Long getIdTrecho() {
         return id_trecho;
     }
 
-    public void setId_trecho(Long id_trecho) {
+    public void setIdTrecho(Long id_trecho) {
         this.id_trecho = id_trecho;
     }
 
