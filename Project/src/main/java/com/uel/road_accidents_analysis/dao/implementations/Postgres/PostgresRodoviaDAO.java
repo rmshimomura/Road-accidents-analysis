@@ -17,6 +17,7 @@ public class PostgresRodoviaDAO implements RodoviaDAO {
         this.connection = connection;
     }
 
+    @Override
     public void insert(Rodovia rodovia) throws SQLException {
         String sql = "INSERT INTO rodovia (uf, nome_rodovia) VALUES (?, ?)";
 
@@ -32,6 +33,7 @@ public class PostgresRodoviaDAO implements RodoviaDAO {
 
     }
 
+    @Override
     public void update(Rodovia rodovia) throws SQLException {
         String sql = "UPDATE rodovia SET uf = ?, nome_rodovia = ? WHERE id_rodovia = ?";
 
@@ -47,6 +49,7 @@ public class PostgresRodoviaDAO implements RodoviaDAO {
         }
     }
 
+    @Override
     public void delete(Rodovia rodovia) throws SQLException {
         String sql = "DELETE FROM rodovia WHERE id_rodovia = ?";
 
@@ -60,6 +63,7 @@ public class PostgresRodoviaDAO implements RodoviaDAO {
         }
     }
 
+    @Override
     public Rodovia getById(Long id) throws SQLException {
         String sql = "SELECT * FROM rodovia WHERE id_rodovia = ?";
 
@@ -87,6 +91,7 @@ public class PostgresRodoviaDAO implements RodoviaDAO {
         return null;
     }
 
+    @Override
     public List<Rodovia> getAll() throws SQLException {
 
         List<Rodovia> rodovias = new ArrayList<Rodovia>();

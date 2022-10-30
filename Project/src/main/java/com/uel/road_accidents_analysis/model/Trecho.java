@@ -35,11 +35,11 @@ public class Trecho {
         this.id = id;
     }
 
-    public Long getId_rodovia() {
+    public Long getIdRodovia() {
         return id_rodovia;
     }
 
-    public void setId_rodovia(Long id_rodovia) {
+    public void setIdRodovia(Long id_rodovia) {
         this.id_rodovia = id_rodovia;
     }
 
