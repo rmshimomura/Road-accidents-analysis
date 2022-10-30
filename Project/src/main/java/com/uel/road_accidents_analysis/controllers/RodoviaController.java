@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("index")
+@RequestMapping("/rodovias")
 public class RodoviaController {
 
-    @GetMapping("main")
+    @GetMapping
     public String getRodovias(Model model) {
         try (DAOFactory daoFactory = DAOFactory.getInstance()) {
             List<Rodovia> rodovias = daoFactory.getRodoviaDAO().getRodovias();
 
             model.addAttribute("rodovias", rodovias);
-            return "index";
+            return "jsp/rodovias";
 
         } catch (Exception e) {
             e.printStackTrace();

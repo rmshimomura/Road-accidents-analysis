@@ -23,7 +23,6 @@ public abstract class ConnectionFactory {
                 InputStream input = ConnectionFactory.class.getClassLoader().getResourceAsStream(propertiesFile);
                 properties.load(input);
                 dbServer = properties.getProperty("server");
-                System.out.println("dbServer: " + dbServer);
             } catch (IOException e) {
                 System.err.println("Erro ao carregar arquivo de propriedades" + e.getMessage());
                 throw new IOException("Erro ao carregar arquivo de propriedades");
