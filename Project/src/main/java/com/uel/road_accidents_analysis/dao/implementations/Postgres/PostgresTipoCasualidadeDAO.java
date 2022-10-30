@@ -70,7 +70,7 @@ public class PostgresTipoCasualidadeDAO implements TipoCasualidadeDAO {
 
             if (rs.next()) {
                 tipoCasualidade = new TipoCasualidade();
-                tipoCasualidade.setId(rs.getLong("id"));
+                tipoCasualidade.setId(rs.getLong("id_tipo_casualidade"));
                 tipoCasualidade.setNome(rs.getString("nome_casualidade"));
             }
         } catch (SQLException e) {
@@ -91,7 +91,7 @@ public class PostgresTipoCasualidadeDAO implements TipoCasualidadeDAO {
 
             while (result.next()) {
                 TipoCasualidade tipoCasualidade = new TipoCasualidade();
-                tipoCasualidade.setId(result.getLong("id"));
+                tipoCasualidade.setId(result.getLong("id_tipo_casualidade"));
                 tipoCasualidade.setNome(result.getString("nome_casualidade"));
                 tipoCasualidades.add(tipoCasualidade);
             }

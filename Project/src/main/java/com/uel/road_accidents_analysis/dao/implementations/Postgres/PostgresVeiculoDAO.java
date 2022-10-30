@@ -18,7 +18,7 @@ public class PostgresVeiculoDAO implements VeiculoDAO {
     }
 
     @Override
-    public void insert(Veiculo veiculo) throws Exception {
+    public void insert(Veiculo veiculo) throws SQLException {
         String sql = "INSERT INTO veiculo (nome_veiculo) VALUES (?)";
 
         try (PreparedStatement prstate = connection.prepareStatement(sql)) {
@@ -32,7 +32,7 @@ public class PostgresVeiculoDAO implements VeiculoDAO {
     }
 
     @Override
-    public void update(Veiculo veiculo) throws Exception {
+    public void update(Veiculo veiculo) throws SQLException {
         String sql = "UPDATE veiculo SET nome_veiculo = ? WHERE id_veiculo = ?";
 
         try (PreparedStatement prstate = connection.prepareStatement(sql)) {
@@ -47,7 +47,7 @@ public class PostgresVeiculoDAO implements VeiculoDAO {
     }
 
     @Override
-    public void delete(Veiculo veiculo) throws Exception {
+    public void delete(Veiculo veiculo) throws SQLException {
         String sql = "DELETE FROM veiculo WHERE id_veiculo = ?";
 
         try (PreparedStatement prstate = connection.prepareStatement(sql)) {
@@ -60,7 +60,7 @@ public class PostgresVeiculoDAO implements VeiculoDAO {
     }
 
     @Override
-    public Veiculo getById(Long id) throws Exception {
+    public Veiculo getById(Long id) throws SQLException {
         String sql = "SELECT * FROM veiculo WHERE id_veiculo = ?";
         Veiculo veiculo = null;
 
@@ -83,7 +83,7 @@ public class PostgresVeiculoDAO implements VeiculoDAO {
 
 
     @Override
-    public List<Veiculo> getAll() throws Exception {
+    public List<Veiculo> getAll() throws SQLException {
         String sql = "SELECT * FROM veiculo";
         List<Veiculo> veiculos = new ArrayList<Veiculo>();
 
