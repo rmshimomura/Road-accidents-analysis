@@ -1,6 +1,6 @@
 package com.uel.road_accidents_analysis.controllers;
 
-import com.uel.road_accidents_analysis.dao.DAOFactory;
+import com.uel.road_accidents_analysis.dao.factories.DAOFactory;
 import com.uel.road_accidents_analysis.model.Rodovia;
 
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ public class RodoviaController {
     @GetMapping
     public String getRodovias(Model model) {
         try (DAOFactory daoFactory = DAOFactory.getInstance()) {
-            List<Rodovia> rodovias = daoFactory.getRodoviaDAO().getRodovias();
+            List<Rodovia> rodovias = daoFactory.getRodoviaDAO().getAll();
 
             model.addAttribute("rodovias", rodovias);
             return "jsp/rodovias";

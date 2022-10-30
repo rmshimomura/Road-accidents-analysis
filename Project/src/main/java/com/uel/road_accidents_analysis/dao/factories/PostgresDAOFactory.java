@@ -1,4 +1,6 @@
-package com.uel.road_accidents_analysis.dao;
+package com.uel.road_accidents_analysis.dao.factories;
+
+import com.uel.road_accidents_analysis.dao.implementations.Postgres.PostgresRodoviaDAO;
 
 import java.sql.Connection;
 
