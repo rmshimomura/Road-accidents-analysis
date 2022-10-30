@@ -18,7 +18,7 @@ public class PostgresTipoCasualidadeDAO implements TipoCasualidadeDAO {
     }
 
     @Override
-    public void insert(TipoCasualidade tipoCasualidade) throws Exception {
+    public void insert(TipoCasualidade tipoCasualidade) throws SQLException {
         String sql = "INSERT INTO tipo_casualidade (nome_casualidade) VALUES (?)";
 
         try (PreparedStatement prstate = connection.prepareStatement(sql)) {
@@ -31,7 +31,7 @@ public class PostgresTipoCasualidadeDAO implements TipoCasualidadeDAO {
     }
 
     @Override
-    public void update(TipoCasualidade tipoCasualidade) throws Exception {
+    public void update(TipoCasualidade tipoCasualidade) throws SQLException {
         String sql = "UPDATE tipo_casualidade SET nome_casualidade = ? WHERE id_tipo_casualidade = ?";
 
         try (PreparedStatement prstate = connection.prepareStatement(sql)) {
@@ -45,7 +45,7 @@ public class PostgresTipoCasualidadeDAO implements TipoCasualidadeDAO {
     }
 
     @Override
-    public void delete(TipoCasualidade tipoCasualidade) throws Exception {
+    public void delete(TipoCasualidade tipoCasualidade) throws SQLException {
         String sql = "DELETE FROM tipo_casualidade WHERE id = ?";
 
         try (PreparedStatement prstate = connection.prepareStatement(sql)) {
@@ -58,10 +58,10 @@ public class PostgresTipoCasualidadeDAO implements TipoCasualidadeDAO {
     }
 
     @Override
-    public TipoCasualidade getById(Long id) throws Exception {
+    public TipoCasualidade getById(Long id) throws SQLException {
         TipoCasualidade tipoCasualidade = null;
 
-        String sql = "SELECT * FROM tipo_casualidade WHERE id = ?";
+        String sql = "SELECT * FROM tipo_casualidade WHERE id_tipo_casualidade = ?";
 
         try (PreparedStatement prstate = connection.prepareStatement(sql)) {
             prstate.setLong(1, id);
@@ -82,7 +82,7 @@ public class PostgresTipoCasualidadeDAO implements TipoCasualidadeDAO {
     }
 
     @Override
-    public List<TipoCasualidade> getAll() throws Exception {
+    public List<TipoCasualidade> getAll() throws SQLException {
         String sql = "SELECT * FROM tipo_casualidade";
         List<TipoCasualidade> tipoCasualidades = new ArrayList<>();
 
