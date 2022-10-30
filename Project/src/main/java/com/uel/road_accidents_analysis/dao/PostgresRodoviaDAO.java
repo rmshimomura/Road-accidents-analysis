@@ -17,7 +17,7 @@ public class PostgresRodoviaDAO {
     }
 
     public void insert(Rodovia rodovia) throws SQLException {
-        String sql = "INSERT INTO rodovia (uf, nomerodovia) VALUES (?, ?)";
+        String sql = "INSERT INTO rodovia (uf, nome_rodovia) VALUES (?, ?)";
 
         try (PreparedStatement prstate = connection.prepareStatement(sql)) {
             prstate.setString(1, rodovia.getUF());
@@ -39,8 +39,8 @@ public class PostgresRodoviaDAO {
 
             while(result.next()){
                 Rodovia rodovia = new Rodovia();
-                rodovia.setId(Long.valueOf(-1));
-                rodovia.setNome(result.getString("nomeRodovia"));
+                rodovia.setId(Long.valueOf(result.getString("id_rodovia")));
+                rodovia.setNome(result.getString("nome_rodovia"));
                 rodovia.setUF(result.getString("UF"));
 
                 rodovias.add(rodovia);

@@ -10,16 +10,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+    <%@include file="../templates/head.jsp" %>
+    <title>Listagem de rodovias</title>
 </head>
 <body>
 
-<c:forEach var="rodovia" items="${requestScope.rodovias}">
-
-    <c:out value="${rodovia.nome}"/>
-
-</c:forEach>
+<table class="table .table-dark">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">UF</th>
+        <th scope="col">Nome da rodovia</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="rodovia" items="${rodovias}">
+        <tr>
+        <th scope="row">${rodovia.id}</th>
+        <td>${rodovia.UF}</td>
+        <td>${rodovia.nome}</td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
 
 <form action="${pageContext.servletContext.contextPath}/" method="GET">
     <button class="btn btn-lg btn-primary btn-block" type="submit">Voltar para o ínício</button>
