@@ -1,14 +1,24 @@
 package com.uel.road_accidents_analysis.model;
 
 public class TipoCasualidade {
+    private Long id;
     private String nome;
 
     public TipoCasualidade(){
 
     }
 
-    public TipoCasualidade(String nome) {
+    public TipoCasualidade(Long id, String nome) {
+        this.id = id;
         this.nome = nome;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
