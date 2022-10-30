@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Trecho {
     private Long id;
-    private Rodovia rodovia;
+    private Long id_rodovia;
     private double kmInicial;
     private double kmFinal;
     private Date dataAvaliacao;
@@ -16,9 +16,9 @@ public class Trecho {
 
     }
 
-    public Trecho(Long id, Rodovia rodovia, double kmInicial, double kmFinal, Date dataAvaliacao, double ICC, double ICP, double ICM) {
+    public Trecho(Long id, Long id_rodovia, double kmInicial, double kmFinal, Date dataAvaliacao, double ICC, double ICP, double ICM) {
         this.id = id;
-        this.rodovia = rodovia;
+        this.id_rodovia = id_rodovia;
         this.kmInicial = kmInicial;
         this.kmFinal = kmFinal;
         this.dataAvaliacao = dataAvaliacao;
@@ -35,12 +35,12 @@ public class Trecho {
         this.id = id;
     }
 
-    public Rodovia getRodovia() {
-        return rodovia;
+    public Long getId_rodovia() {
+        return id_rodovia;
     }
 
-    public void setRodovia(Rodovia rodovia) {
-        this.rodovia = rodovia;
+    public void setId_rodovia(Long id_rodovia) {
+        this.id_rodovia = id_rodovia;
     }
 
     public double getKmInicial() {
@@ -90,5 +90,4 @@ public class Trecho {
     public void setICM(double ICM) {
         this.ICM = ICM;
     }
-
 }

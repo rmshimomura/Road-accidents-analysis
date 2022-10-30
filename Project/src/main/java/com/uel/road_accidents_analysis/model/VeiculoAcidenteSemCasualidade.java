@@ -1,34 +1,34 @@
 package com.uel.road_accidents_analysis.model;
 
 public class VeiculoAcidenteSemCasualidade {
-    private AcidenteSemCasualidade acidenteSemCasualidade;
-    private Veiculo veiculo;
+    private Long id_acidente_sem_casualidade;
+    private Long id_veiculo;
     private int quantidade;
 
-    public VeiculoAcidenteSemCasualidade(){
+    public VeiculoAcidenteSemCasualidade() {
 
     }
 
-    public VeiculoAcidenteSemCasualidade(AcidenteSemCasualidade acidenteSemCasualidade, Veiculo veiculo, int quantidade) {
-        this.acidenteSemCasualidade = acidenteSemCasualidade;
-        this.veiculo = veiculo;
+    public VeiculoAcidenteSemCasualidade(Long id_acidente_sem_casualidade, Long id_veiculo, int quantidade) {
+        this.id_acidente_sem_casualidade = id_acidente_sem_casualidade;
+        this.id_veiculo = id_veiculo;
         this.quantidade = quantidade;
     }
 
-    public AcidenteSemCasualidade getAcidenteSemCasualidade() {
-        return acidenteSemCasualidade;
+    public Long getId_acidente_sem_casualidade() {
+        return id_acidente_sem_casualidade;
     }
 
-    public void setAcidenteSemCasualidade(AcidenteSemCasualidade acidenteSemCasualidade) {
-        this.acidenteSemCasualidade = acidenteSemCasualidade;
+    public void setId_acidente_sem_casualidade(Long id_acidente_sem_casualidade) {
+        this.id_acidente_sem_casualidade = id_acidente_sem_casualidade;
     }
 
-    public Veiculo getVeiculo() {
-        return veiculo;
+    public Long getId_veiculo() {
+        return id_veiculo;
     }
 
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
+    public void setId_veiculo(Long id_veiculo) {
+        this.id_veiculo = id_veiculo;
     }
 
     public int getQuantidade() {

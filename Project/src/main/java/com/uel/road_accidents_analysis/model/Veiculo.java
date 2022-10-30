@@ -1,14 +1,24 @@
 package com.uel.road_accidents_analysis.model;
 
 public class Veiculo {
+    private Long id;
     private String nome;
 
     public Veiculo(){
 
     }
 
-    public Veiculo(String nome) {
+    public Veiculo(Long id, String nome) {
+        this.id = id;
         this.nome = nome;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {

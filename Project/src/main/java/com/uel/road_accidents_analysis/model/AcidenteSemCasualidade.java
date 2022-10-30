@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class AcidenteSemCasualidade {
     private Long id;
-    private Trecho trecho;
+    private Long id_trecho;
     private Date data;
     private Time horario;
     private double km;
@@ -16,9 +16,9 @@ public class AcidenteSemCasualidade {
 
     }
 
-    public AcidenteSemCasualidade(Long id, Trecho trecho, Date data, Time horario, double km, String sentido, String tipo) {
+    public AcidenteSemCasualidade(Long id, Long id_trecho, Date data, Time horario, double km, String sentido, String tipo) {
         this.id = id;
-        this.trecho = trecho;
+        this.id_trecho = id_trecho;
         this.data = data;
         this.horario = horario;
         this.km = km;
@@ -34,12 +34,12 @@ public class AcidenteSemCasualidade {
         this.id = id;
     }
 
-    public Trecho getTrecho() {
-        return trecho;
+    public Long getId_trecho() {
+        return id_trecho;
     }
 
-    public void setTrecho(Trecho trecho) {
-        this.trecho = trecho;
+    public void setId_trecho(Long id_trecho) {
+        this.id_trecho = id_trecho;
     }
 
     public Date getData() {

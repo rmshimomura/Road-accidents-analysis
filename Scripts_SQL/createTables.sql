@@ -3,20 +3,24 @@ CREATE TABLE Rodovia(
     UF VARCHAR(2) NOT NULL,
     nome_rodovia VARCHAR(50) NOT NULL,
 
-    CONSTRAINT PK_Rodovia PRIMARY KEY (id_rodovia)
-    CONSTRAINT UK_Rodovia UNIQUE (UF, nome_rodovia);
+    CONSTRAINT PK_Rodovia PRIMARY KEY (id_rodovia),
+    CONSTRAINT UK_Rodovia UNIQUE (UF, nome_rodovia)
 );
 
 CREATE TABLE Veiculo(
+    id_veiculo SERIAL NOT NULL,
     nome_veiculo VARCHAR(50) NOT NULL,
 
-    CONSTRAINT PK_Veiculo PRIMARY KEY (nome_veiculo)
+    CONSTRAINT PK_Veiculo PRIMARY KEY (id_veiculo),
+    CONSTRAINT UK_Veiculo UNIQUE (nome_veiculo)
 );
 
 CREATE TABLE Tipo_casualidade(
+    id_tipo_casualidade SERIAL NOT NULL,
     nome_casualidade VARCHAR(50) NOT NULL,
 
-    CONSTRAINT PK_Tipo_casualidade PRIMARY KEY (nome_casualidade)
+    CONSTRAINT PK_Tipo_casualidade PRIMARY KEY (id_tipo_casualidade),
+    CONSTRAINT UK_Tipo_casualidade UNIQUE (nome_casualidade)
 );
 
 CREATE TABLE Trecho(

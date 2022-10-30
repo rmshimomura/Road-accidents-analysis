@@ -91,7 +91,7 @@ public class PostgresRodoviaDAO implements RodoviaDAO {
 
         List<Rodovia> rodovias = new ArrayList<Rodovia>();
 
-        String sql = "SELECT * FROM rodovia";
+        String sql = "SELECT * FROM rodovia ORDER BY id_rodovia";
 
         try {
             PreparedStatement prstate = connection.prepareStatement(sql);
