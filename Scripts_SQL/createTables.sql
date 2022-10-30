@@ -4,6 +4,7 @@ CREATE TABLE Rodovia(
     nome_rodovia VARCHAR(50) NOT NULL,
 
     CONSTRAINT PK_Rodovia PRIMARY KEY (id_rodovia)
+    CONSTRAINT UK_Rodovia UNIQUE (UF, nome_rodovia);
 );
 
 CREATE TABLE Veiculo(
@@ -30,7 +31,7 @@ CREATE TABLE Trecho(
     icm FLOAT NOT NULL,
 
     CONSTRAINT PK_Trecho PRIMARY KEY (id_trecho),
-    CONSTRAINT FK_Trecho_Rodovia FOREIGN KEY (id_rodovia) REFERENCES Rodovia(id_rodovia),
+    CONSTRAINT FK_Trecho_Rodovia FOREIGN KEY (id_rodovia) REFERENCES Rodovia(id_rodovia)
 );
 
 CREATE TABLE Acidente_sc(
@@ -96,3 +97,17 @@ CREATE TABLE Casualidade_acidente(
 
 );
 
+CREATE TABLE Log_Cargas(
+    id_log_cargas SERIAL NOT NULL,
+
+    nome_arquivo VARCHAR(50) NOT NULL,
+    tipo_arquivo VARCHAR(50) NOT NULL,
+    tuplas_carregadas INT NOT NULL,
+
+    horario_carga TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT PK_Log_Cargas PRIMARY KEY (id_log_cargas),
+    CONSTRAINT CK_Tuplas_Carregadas CHECK (tuplas_carregadas >= 0)
+
+
+);
