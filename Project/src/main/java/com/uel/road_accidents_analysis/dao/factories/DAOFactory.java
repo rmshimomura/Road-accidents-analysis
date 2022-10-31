@@ -1,6 +1,7 @@
 package com.uel.road_accidents_analysis.dao.factories;
 
 import com.uel.road_accidents_analysis.dao.implementations.Postgres.PostgresRodoviaDAO;
+import com.uel.road_accidents_analysis.dao.interfaces.custom.*;
 import com.uel.road_accidents_analysis.jdbc.ConnectionFactory;
 
 import java.io.IOException;
@@ -56,8 +57,6 @@ public abstract class DAOFactory implements AutoCloseable {
             throw new SQLException("Erro ao finalizar transação");
         }
     }
-    @SuppressWarnings("unused")
-    public abstract PostgresRodoviaDAO getRodoviaDAO();
 
     public void closeConnection() throws SQLException {
         try {
@@ -68,7 +67,18 @@ public abstract class DAOFactory implements AutoCloseable {
         }
     }
 
-    //TODO COLOCAR AQUI OS DAOs em modo abstract
+    public abstract AcidenteComCasualidadeDAO getAcidenteComCasualidadeDAO();
+    public abstract AcidenteSemCasualidadeDAO getAcidenteSemCasualidadeDAO();
+    public abstract CasualidadeNoAcidenteDAO getCasualidadeNoAcidenteDAO();
+    public abstract LogCargasDAO getLogCargasDAO();
+    public abstract RodoviaDAO getRodoviaDAO();
+    public abstract TipoCasualidadeDAO getTipoCasualidadeDAO();
+    public abstract TrechoDAO getTrechoDAO();
+    public abstract VeiculoAcidenteComCasualidadeDAO getVeiculoAcidenteComCasualidadeDAO();
+    public abstract VeiculoAcidenteSemCasualidadeDAO getVeiculoAcidenteSemCasualidadeDAO();
+    public abstract VeiculoDAO getVeiculoDAO();
+
+
 
     @Override
     public void close() throws Exception {
