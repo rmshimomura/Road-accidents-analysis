@@ -9,10 +9,8 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class ProjectApplication extends SpringBootServletInitializer {
 
     /*
-       TODO Remontar banco de dados
-       TODO Implementar DAOs
-       TODO LogController
-       TODO Tratamento de arquivo
+       TODO Controllers no geral
+       TODO Frontend
     * */
 
     @Override
