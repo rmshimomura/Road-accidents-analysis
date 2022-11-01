@@ -92,6 +92,30 @@ public class PostgresRodoviaDAO implements RodoviaDAO {
     }
 
     @Override
+    public Long getIdByInfo(Rodovia rodovia) throws SQLException {
+        String sql = "SELECT id_rodovia FROM rodovia WHERE uf = ? AND nome_rodovia = ?";
+
+        try (PreparedStatement prstate = connection.prepareStatement(sql)) {
+            prstate.setString(1, rodovia.getUF());
+            prstate.setString(2, rodovia.getNome());
+
+            try (ResultSet result = prstate.executeQuery()) {
+                if (result.next()) {
+                    return result.getLong("id_rodovia");
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+                throw new SQLException("Erro ao buscar rodovia");
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao buscar rodovia");
+        }
+
+        return null;
+    }
+
+    @Override
     public List<Rodovia> getAll() throws SQLException {
 
         List<Rodovia> rodovias = new ArrayList<Rodovia>();

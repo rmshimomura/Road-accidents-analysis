@@ -18,13 +18,13 @@ public class PostgresTrechoDAO implements TrechoDAO {
 
     @Override
     public void insert(Trecho trecho) throws SQLException {
-        String sql = "INSERT INTO trecho (id_rodovia, km_inicial, km_final, data_avaliacao, icc, icp, icm) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO trecho (id_rodovia, km_inicial, km_final, data_avaliacao, icc, icp, icm) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement prstate = connection.prepareStatement(sql)) {
             prstate.setLong(1, trecho.getIdRodovia());
             prstate.setDouble(2, trecho.getKmInicial());
             prstate.setDouble(3, trecho.getKmFinal());
-            prstate.setDate(4, (Date) trecho.getDataAvaliacao());
+            prstate.setDate(4, new java.sql.Date(trecho.getDataAvaliacao().getTime()));
             prstate.setDouble(5, trecho.getICC());
             prstate.setDouble(6, trecho.getICP());
             prstate.setDouble(7, trecho.getICM());
