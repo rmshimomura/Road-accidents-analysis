@@ -10,12 +10,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+  <%@include file="../templates/head.jsp" %>
+  <title>Listagem de rodovias</title>
 </head>
 <body>
 
-<h1>Trechos aqui!</h1>
+<table class="table .table-dark">
+  <thead>
+  <tr>
+    <th scope="col">ID do trecho</th>
+    <th scope="col">KM inicial</th>
+    <th scope="col">KM final</th>
+    <th scope="col">Data da avaliação</th>
+    <th scope="col">ICC</th>
+    <th scope="col">ICP</th>
+    <th scope="col">ICM</th>
+  </tr>
+  </thead>
+  <tbody>
+    <c:forEach var="trecho" items="${trechos}">
+        <tr>
+        <th scope="row">${trecho.id}</th>
+        <td>${trecho.kmInicial}</td>
+        <td>${trecho.kmFinal}</td>
+        <td>${trecho.dataAvaliacao}</td>
+        <td>${trecho.ICC}</td>
+        <td>${trecho.ICP}</td>
+        <td>${trecho.ICM}</td>
+        </tr>
+    </c:forEach>
+
+  </tbody>
+</table>
 
 <form action="${pageContext.servletContext.contextPath}/" method="GET">
   <button class="btn btn-lg btn-primary btn-block" type="submit">Voltar para o ínício</button>
