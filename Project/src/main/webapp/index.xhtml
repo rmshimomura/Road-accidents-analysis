@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+    <title>Mercado</title>
+</h:head>
+
+<h:body>
+
+    <h1 style="text-align: center; font-family: sans-serif;">Menus</h1>
+    <h2 style="text-align: center; font-family: sans-serif;">Selecione o modo de operação...</h2>
+
+    <h:form id="barraDeMenus">
+
+        <p:toolbar>
+            <p:toolbarGroup>
+                <div style="text-align: center;">
+                    <p:commandButton value="Modo administrador" action="admin.xhtml"
+                                     ajax="false" style="width:300px;height:40px" />
+                    <br></br>
+                    <p:commandButton value="Modo comprador" action="comprador.xhtml"
+                                     ajax="false" style="width:300px;height:40px" />
+                </div>
+            </p:toolbarGroup>
+        </p:toolbar>
+
+    </h:form>
+
+
+</h:body>
+
+</html>
