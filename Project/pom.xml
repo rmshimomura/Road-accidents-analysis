@@ -48,8 +48,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!--BOMB BELOW-->
-
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
