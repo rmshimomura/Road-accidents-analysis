@@ -35,7 +35,7 @@ CREATE TABLE Trecho(
     icm FLOAT NOT NULL,
 
     CONSTRAINT PK_Trecho PRIMARY KEY (id_trecho),
-    CONSTRAINT FK_Trecho_Rodovia FOREIGN KEY (id_rodovia) REFERENCES Rodovia(id_rodovia)
+    CONSTRAINT FK_Trecho_Rodovia FOREIGN KEY (id_rodovia) REFERENCES Rodovia(id_rodovia),
     CONSTRAINT UK_Trecho UNIQUE (id_rodovia, km_inicial, km_final, data_avaliacao)
 );
 
@@ -50,7 +50,7 @@ CREATE TABLE Acidente_sc(
     tipo_acidente VARCHAR(50) NOT NULL,
 
     CONSTRAINT PK_Acidente_sc PRIMARY KEY (id_acidente_sc),
-    CONSTRAINT FK_Acidente_sc_Trecho FOREIGN KEY (id_trecho) REFERENCES Trecho(id_trecho)
+    CONSTRAINT FK_Acidente_sc_Trecho FOREIGN KEY (id_trecho) REFERENCES Trecho(id_trecho),
     CONSTRAINT UK_Acidente_sc UNIQUE (id_trecho, data_acidente, horario, km_acidente, sentido, tipo_acidente)
 );
 
@@ -65,7 +65,7 @@ CREATE TABLE Acidente_cc(
     tipo_acidente VARCHAR(50) NOT NULL,
 
     CONSTRAINT PK_Acidente_cc PRIMARY KEY (id_acidente_cc),
-    CONSTRAINT FK_Acidente_cc_Trecho FOREIGN KEY (id_trecho) REFERENCES Trecho(id_trecho)
+    CONSTRAINT FK_Acidente_cc_Trecho FOREIGN KEY (id_trecho) REFERENCES Trecho(id_trecho),
     CONSTRAINT UK_Acidente_cc UNIQUE (id_trecho, data_acidente, horario, km_acidente, sentido, tipo_acidente)
 );
 
