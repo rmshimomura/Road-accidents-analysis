@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<ui:composition template="./rodovias.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="componente">
+
+        <h:form id="rodovias">
+
+            <h:panelGrid columns="5" cellpadding="5" style="margin: 0 auto;">
+                <p:outputLabel for="input" value="UF" />
+                <p:selectOneMenu id="inputUF" value="#{rodoviaController.chosenUF}" required="false">
+                    <f:selectItem itemLabel="Todos os estados" itemValue="" />
+                    <f:selectItems value="#{rodoviaController.ufs}" />
+                </p:selectOneMenu>
+                <p:outputLabel for="input" value="Nome:" />
+                <p:inputText id="input" value="#{rodoviaController.rodovia.nome}" />
+                <p:commandButton update="rodovias" value="Buscar"
+                                 action="#{rodoviaController.buscar}">
+                </p:commandButton>
+
+            </h:panelGrid>
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate/>
+            </p:messages>
+
+            <p:dataTable id="tabelaRodovias" var="rodovia"
+                         value="#{rodoviaController.listaRodovias}"
+                         rendered="#{not empty rodoviaController.listaRodovias}"
+                         paginator="true" rows="15"
+                         paginatorTemplate="{FirstPageLink}
+             		{PreviousPageLink} {PageLinks} {NextPageLink}
+             		{LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15,20,25,30,35,40,45,50,100">
+
+                <p:column headerText="UF">
+                    <p:outputLabel id="rodoviaUF" value="#{rodovia.UF}" />
+                </p:column>
+
+                <p:column headerText="Nome">
+                    <p:outputLabel id="rodoviaNome" value="#{rodovia.nome}" />
+                </p:column>
+
+            </p:dataTable>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
