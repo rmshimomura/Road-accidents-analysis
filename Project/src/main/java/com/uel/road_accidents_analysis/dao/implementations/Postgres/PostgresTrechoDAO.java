@@ -31,8 +31,8 @@ public class PostgresTrechoDAO implements TrechoDAO {
 
             prstate.execute();
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
-            throw new SQLException("Erro ao inserir trecho");
+            //System.err.println(e.getMessage());
+            //throw new SQLException("Erro ao inserir trecho");
         }
     }
 

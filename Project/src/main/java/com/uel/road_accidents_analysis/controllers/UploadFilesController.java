@@ -23,6 +23,39 @@ import java.util.Scanner;
 @Controller
 public class UploadFilesController implements Serializable {
 
+    public void parseAcidente(FileUploadEvent event){
+        UploadedFile file = event.getFile();
+
+        FacesMessage message;
+
+        if (file != null) {
+            message = new FacesMessage(file.getFileName() + " uploaded.");
+        } else {
+            message = new FacesMessage("Upload failed.");
+        }
+        FacesContext.getCurrentInstance().addMessage(null, message);
+
+        try {
+            assert file != null;
+            InputStream inputStream = file.getInputStream();
+            Scanner scanner = new Scanner(inputStream);
+
+            boolean isFirstLine = true;
+
+            String headerLine = null;
+
+            while (scanner.hasNextLine() && headerLine == null) {
+                String line = scanner.nextLine();
+                if (line.charAt(1) == ';' || line.isBlank()) {
+                    continue;
+                }
+
+                headerLine = line;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void parseFile(FileUploadEvent event) {
 
         UploadedFile file = event.getFile();
@@ -41,92 +74,77 @@ public class UploadFilesController implements Serializable {
             InputStream inputStream = file.getInputStream();
             Scanner scanner = new Scanner(inputStream);
 
-            boolean firstLine = true;
+            boolean isFirstLine = true;
 
-            try (DAOFactory daoFactory = DAOFactory.getInstance()) {
+            String headerLine = null;
 
-                while (scanner.hasNextLine()) {
+            while (scanner.hasNextLine() && headerLine == null) {
+                String line = scanner.nextLine();
+                if (line.charAt(1) == ';' || line.isBlank()) {
+                    continue;
+                }
 
-                    if (firstLine) {
-                        firstLine = false;
-                        scanner.nextLine();
-                        continue;
-                    }
+                headerLine = line;
+            }
 
-                    String line = scanner.nextLine();
+            Boolean hasObservacao = headerLine.contains("Observação");
 
-                    String uf;
-                    uf = line.substring(0, line.indexOf(';'));
-                    line = line.substring(line.indexOf(';') + 1);
-                    String nome_rodovia;
-                    nome_rodovia = line.substring(0, line.indexOf(';'));
-                    line = line.substring(line.indexOf(';') + 1);
-                    Rodovia rodovia = new Rodovia();
-                    rodovia.setUF(uf);
-                    rodovia.setNome(nome_rodovia);
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
 
-                    String kmInicial, kmFinal;
-                    kmInicial = line.substring(0, line.indexOf(';'));
-                    kmInicial = kmInicial.replace(',', '.');
-                    line = line.substring(line.indexOf(';') + 1);
-                    kmFinal = line.substring(0, line.indexOf(';'));
-                    kmFinal = kmFinal.replace(',', '.');
-                    line = line.substring(line.indexOf(';') + 1);
-                    line = line.substring(line.indexOf(';') + 1);
-                    String dataAvaliacao;
-                    dataAvaliacao = line.substring(0, line.indexOf(';'));
-                    line = line.substring(line.indexOf(';') + 1);
-                    line = line.substring(line.indexOf(';') + 1);
-                    line = line.substring(line.indexOf(';') + 1);
-                    line = line.substring(line.indexOf(';') + 1);
+                String contents[] = line.split(";");
 
-                    String ICC, ICP, ICM;
-                    ICC = line.substring(0, line.indexOf(';'));
-                    ICC = ICC.replace(',', '.');
-                    line = line.substring(line.indexOf(';') + 1);
-                    ICP = line.substring(0, line.indexOf(';'));
-                    ICP = ICP.replace(',', '.');
-                    line = line.substring(line.indexOf(';') + 1);
-                    ICM = line;
-                    ICM = ICM.replace(',', '.');
+                if (contents.length == 0) {
+                    continue;
+                }
 
-                    Trecho trecho = new Trecho();
-                    double dkmInicial, dkmFinal;
+                Rodovia rodovia = new Rodovia();
+                rodovia.setUF(contents[0]);
+                rodovia.setNome(contents[1]);
 
-                    dkmInicial = Double.parseDouble(kmInicial);
-                    dkmFinal = Double.parseDouble(kmFinal);
-                    if (dkmInicial > dkmFinal) {
-                        double aux = dkmInicial;
-                        dkmInicial = dkmFinal;
-                        dkmFinal = aux;
-                    }
-                    trecho.setKmInicial(dkmInicial);
-                    trecho.setKmFinal(dkmFinal);
-                    trecho.setICC(Double.parseDouble(ICC));
-                    trecho.setICM(Double.parseDouble(ICM));
-                    trecho.setICP(Double.parseDouble(ICP));
-                    trecho.setDataAvaliacao(new SimpleDateFormat("dd/MM/yyyy").parse(dataAvaliacao));
-
-                    try {
-                        daoFactory.getRodoviaDAO().insert(rodovia);
-                    } catch (Exception e) {
-                        System.out.println("Rodovia já cadastrada");
-                    }
-
-                    trecho.setIdRodovia(daoFactory.getRodoviaDAO().getIdByInfo(rodovia));
-                    daoFactory.getTrechoDAO().insert(trecho);
+                try (DAOFactory daoFactory = DAOFactory.getInstance()){
+                    daoFactory.getRodoviaDAO().insert(rodovia);
+                } catch (Exception e) {
 
                 }
+
+                Trecho trecho = new Trecho();
+                double kmInicial = Double.parseDouble(contents[2].replace(",", "."));
+                double kmFinal = Double.parseDouble(contents[3].replace(",", "."));
+                if(kmInicial > kmFinal) {
+                    trecho.setKmInicial(kmFinal);
+                    trecho.setKmFinal(kmInicial);
+                } else {
+                    trecho.setKmInicial(kmInicial);
+                    trecho.setKmFinal(kmFinal);
+                }
+
+                trecho.setDataAvaliacao(new SimpleDateFormat("dd/MM/yyyy").parse(contents[5]));
+
+                if(hasObservacao == true) {
+                    trecho.setICC(Double.parseDouble(contents[9].replace(",", ".")));
+                    trecho.setICP(Double.parseDouble(contents[10].replace(",", ".")));
+                    trecho.setICM(Double.parseDouble(contents[11].replace(",", ".")));
+                }
+                else {
+                    trecho.setICC(Double.parseDouble(contents[8].replace(",", ".")));
+                    trecho.setICP(Double.parseDouble(contents[9].replace(",", ".")));
+                    trecho.setICM(Double.parseDouble(contents[10].replace(",", ".")));
+                }
+
+                try (DAOFactory daoFactory = DAOFactory.getInstance()){
+                    trecho.setIdRodovia(daoFactory.getRodoviaDAO().getIdByInfo(rodovia));
+                    daoFactory.getTrechoDAO().insert(trecho);
+                } catch (Exception e) {
+
+                }
+
+            }
+
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
-            scanner.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
 
