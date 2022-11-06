@@ -131,5 +131,38 @@ public class PostgresTrechoDAO implements TrechoDAO {
         }
     }
 
+    @Override
+    public Trecho getTrechoByRodoviaKmAndData(Long idRodovia, Double km, java.util.Date dataAvaliacao) throws java.sql.SQLException{
+        //String sql = "SELECT * FROM trecho WHERE id_rodovia = ? AND km_inicial <= ? AND km_final >= ? AND data_avaliacao <= TO_DATE(?, 'YYYY-MM-DD') ORDER BY data_avaliacao DESC LIMIT 1";
+        //order by smallest difference between data_avaliacao and dataAvaliacao
+        String sql = "SELECT * FROM trecho WHERE id_rodovia = ? AND km_inicial <= ? AND km_final >= ? ORDER BY ABS(data_avaliacao - TO_DATE(?, 'YYYY-MM-DD')) LIMIT 1";
+        try (PreparedStatement prstate = connection.prepareStatement(sql)) {
+            prstate.setLong(1, idRodovia);
+            prstate.setDouble(2, km);
+            prstate.setDouble(3, km);
+            prstate.setDate(4, new Date(dataAvaliacao.getTime()));
+
+            ResultSet rs = prstate.executeQuery();
+
+            if (rs.next()) {
+                Trecho trecho = new Trecho();
+                trecho.setId(rs.getLong("id_trecho"));
+                trecho.setIdRodovia(rs.getLong("id_rodovia"));
+                trecho.setKmInicial(rs.getDouble("km_inicial"));
+                trecho.setKmFinal(rs.getDouble("km_final"));
+                trecho.setDataAvaliacao(rs.getDate("data_avaliacao"));
+                trecho.setICC(rs.getDouble("icc"));
+                trecho.setICP(rs.getDouble("icp"));
+                trecho.setICM(rs.getDouble("icm"));
+
+                return trecho;
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao buscar trecho por rodovia, km e data");
+        }
+
+        return null;
+    }
 
 }

@@ -3,10 +3,7 @@ package com.uel.road_accidents_analysis.dao.implementations.Postgres;
 import com.uel.road_accidents_analysis.dao.interfaces.custom.AcidenteComCasualidadeDAO;
 import com.uel.road_accidents_analysis.model.AcidenteComCasualidade;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,14 +22,15 @@ public class PostgresAcidenteComCasualidadeDAO implements AcidenteComCasualidade
 
         try (PreparedStatement prstate = connection.prepareStatement(sql)) {
             prstate.setLong(1, acidenteComCasualidade.getIdTrecho());
-            prstate.setDate(2, (Date) acidenteComCasualidade.getData());
+            prstate.setDate(2, new java.sql.Date(acidenteComCasualidade.getData().getTime()));
             prstate.setTime(3, acidenteComCasualidade.getHorario());
             prstate.setDouble(4, acidenteComCasualidade.getKm());
             prstate.setString(5, acidenteComCasualidade.getSentido());
             prstate.setString(6, acidenteComCasualidade.getTipo());
-            prstate.executeUpdate();
+
+            prstate.execute();
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            //System.err.println(e.getMessage());
             throw new SQLException("Erro ao inserir acidente sem casualidade");
         }
     }
@@ -121,5 +119,38 @@ public class PostgresAcidenteComCasualidadeDAO implements AcidenteComCasualidade
         }
 
         return acidentesComCasualidade;
+    }
+
+    @Override
+    public AcidenteComCasualidade getByTrechoHorarioDataAndKm(Long idTrecho, java.util.Date data, Time horario, Double km) throws SQLException {
+        String sql = "SELECT * FROM Acidente_cc WHERE id_trecho = ? AND data_acidente = ? AND horario = ? AND km_acidente = ?";
+
+        try (PreparedStatement prstate = connection.prepareStatement(sql)) {
+            prstate.setLong(1, idTrecho);
+            prstate.setDate(2, new Date(data.getTime()));
+            prstate.setTime(3, horario);
+            prstate.setDouble(4, km);
+
+            //print prepared statement
+            prstate.execute();
+
+            if (prstate.getResultSet().next()) {
+                AcidenteComCasualidade acidenteComCasualidade = new AcidenteComCasualidade();
+                acidenteComCasualidade.setId(prstate.getResultSet().getLong("id_acidente_cc"));
+                acidenteComCasualidade.setIdTrecho(prstate.getResultSet().getLong("id_trecho"));
+                acidenteComCasualidade.setData(prstate.getResultSet().getDate("data_acidente"));
+                acidenteComCasualidade.setHorario(prstate.getResultSet().getTime("horario"));
+                acidenteComCasualidade.setKm(prstate.getResultSet().getDouble("km_acidente"));
+                acidenteComCasualidade.setSentido(prstate.getResultSet().getString("sentido"));
+                acidenteComCasualidade.setTipo(prstate.getResultSet().getString("tipo_acidente"));
+
+                return acidenteComCasualidade;
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao buscar acidente sem casualidade");
+        }
+
+        return null;
     }
 }
