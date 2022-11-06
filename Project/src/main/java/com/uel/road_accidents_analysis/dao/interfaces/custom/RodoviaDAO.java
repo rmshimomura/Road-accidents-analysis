@@ -14,4 +14,5 @@ public interface RodoviaDAO extends DAO<Rodovia> {
     List<String> getAllUF() throws SQLException;
 
     List<Rodovia> getAllRodoviaByUF(String uf) throws SQLException;
+
 }
