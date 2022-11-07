@@ -105,6 +105,11 @@ public class UploadFilesController implements Serializable {
         }
         FacesContext.getCurrentInstance().addMessage(null, message);
 
+        LogCargas log = new LogCargas();
+        log.setTuplasCarregadas(0);
+        log.setNomeArquivo(file.getFileName());
+        log.setTipoArquivo(file.getContentType());
+
         try {
             assert file != null;
             InputStream inputStream = file.getInputStream();
@@ -142,6 +147,7 @@ public class UploadFilesController implements Serializable {
                             daoFactory.getVeiculoAcidenteSemCasualidadeDAO().insert(veiculo);
                         }
 
+                        log.setTuplasCarregadas(log.getTuplasCarregadas() + 1);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -173,6 +179,7 @@ public class UploadFilesController implements Serializable {
                             daoFactory.getCasualidadeNoAcidenteDAO().insert(casualidade);
                         }
 
+                        log.setTuplasCarregadas(log.getTuplasCarregadas() + 1);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -184,6 +191,11 @@ public class UploadFilesController implements Serializable {
             e.printStackTrace();
         }
 
+        try (DAOFactory daoFactory = DAOFactory.getInstance()){
+            daoFactory.getLogCargasDAO().insert(log);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public void parseFile(FileUploadEvent event) {
 
@@ -197,6 +209,11 @@ public class UploadFilesController implements Serializable {
             message = new FacesMessage("Upload failed.");
         }
         FacesContext.getCurrentInstance().addMessage(null, message);
+
+        LogCargas log = new LogCargas();
+        log.setTuplasCarregadas(0);
+        log.setNomeArquivo(file.getFileName());
+        log.setTipoArquivo(file.getContentType());
 
         try {
             assert file != null;
@@ -263,6 +280,7 @@ public class UploadFilesController implements Serializable {
                 try (DAOFactory daoFactory = DAOFactory.getInstance()){
                     trecho.setIdRodovia(daoFactory.getRodoviaDAO().getRodoviaByUfAndName(rodovia.getUF(), rodovia.getNome()).get(0).getId());
                     daoFactory.getTrechoDAO().insert(trecho);
+                    log.setTuplasCarregadas(log.getTuplasCarregadas() + 1);
                 } catch (Exception e) {
 
                 }
@@ -270,9 +288,15 @@ public class UploadFilesController implements Serializable {
             }
 
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try (DAOFactory daoFactory = DAOFactory.getInstance()){
+            daoFactory.getLogCargasDAO().insert(log);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
