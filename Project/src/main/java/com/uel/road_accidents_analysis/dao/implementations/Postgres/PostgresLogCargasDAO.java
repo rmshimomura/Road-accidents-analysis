@@ -18,13 +18,13 @@ public class PostgresLogCargasDAO implements LogCargasDAO {
     @Override
     public void insert(LogCargas logCargas) throws SQLException {
 
-        String sql = "INSERT INTO log_cargas (nome_arquivo, tipo_arquivo, tuplas_carregadas, horario_carga) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO log_cargas (nome_arquivo, tipo_arquivo, tuplas_carregadas) VALUES (?, ?, ?)";
 
         try (PreparedStatement prstate = connection.prepareStatement(sql)) {
             prstate.setString(1, logCargas.getNomeArquivo());
             prstate.setString(2, logCargas.getTipoArquivo());
             prstate.setLong(3, logCargas.getTuplasCarregadas());
-            prstate.setTimestamp(4, (Timestamp) logCargas.getHorarioCarga());
+
             prstate.execute();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
