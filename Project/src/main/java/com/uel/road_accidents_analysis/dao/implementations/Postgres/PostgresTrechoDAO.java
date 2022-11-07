@@ -133,8 +133,7 @@ public class PostgresTrechoDAO implements TrechoDAO {
 
     @Override
     public Trecho getTrechoByRodoviaKmAndData(Long idRodovia, Double km, java.util.Date dataAvaliacao) throws java.sql.SQLException{
-        //String sql = "SELECT * FROM trecho WHERE id_rodovia = ? AND km_inicial <= ? AND km_final >= ? AND data_avaliacao <= TO_DATE(?, 'YYYY-MM-DD') ORDER BY data_avaliacao DESC LIMIT 1";
-        //order by smallest difference between data_avaliacao and dataAvaliacao
+
         String sql = "SELECT * FROM trecho WHERE id_rodovia = ? AND km_inicial <= ? AND km_final >= ? ORDER BY ABS(data_avaliacao - TO_DATE(?, 'YYYY-MM-DD')) LIMIT 1";
         try (PreparedStatement prstate = connection.prepareStatement(sql)) {
             prstate.setLong(1, idRodovia);
@@ -163,6 +162,67 @@ public class PostgresTrechoDAO implements TrechoDAO {
         }
 
         return null;
+    }
+
+    @Override
+    public List<Trecho> getTrechosByRodovia(String uf, String rodovia) throws SQLException{
+
+        String sql = "SELECT * FROM trecho WHERE id_rodovia IN (SELECT id_rodovia FROM rodovia WHERE uf = ? AND nome_rodovia = ?)";
+        try (PreparedStatement prstate = connection.prepareStatement(sql)) {
+            prstate.setString(1, uf);
+            prstate.setString(2, rodovia);
+
+            ResultSet rs = prstate.executeQuery();
+
+            List<Trecho> trechos = new ArrayList<>();
+
+            while (rs.next()) {
+                Trecho trecho = new Trecho();
+                trecho.setId(rs.getLong("id_trecho"));
+                trecho.setIdRodovia(rs.getLong("id_rodovia"));
+                trecho.setKmInicial(rs.getDouble("km_inicial"));
+                trecho.setKmFinal(rs.getDouble("km_final"));
+                trecho.setDataAvaliacao(rs.getDate("data_avaliacao"));
+                trecho.setICC(rs.getDouble("icc"));
+                trecho.setICP(rs.getDouble("icp"));
+                trecho.setICM(rs.getDouble("icm"));
+
+                trechos.add(trecho);
+            }
+
+            return trechos;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao buscar trechos por rodovia");
+        }
+    }
+
+    @Override
+    public List<String> getUfs() throws SQLException {
+
+        List<String> rodovias = new ArrayList<>();
+
+        String sql = "SELECT DISTINCT uf FROM rodovia ORDER BY uf";
+
+        try {
+            PreparedStatement prstate = connection.prepareStatement(sql);
+
+            ResultSet result = prstate.executeQuery();
+
+            while (result.next()) {
+                rodovias.add(result.getString("uf"));
+            }
+
+            result.close();
+            prstate.close();
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao buscar rodovias");
+        }
+
+
+        return rodovias;
     }
 
 }

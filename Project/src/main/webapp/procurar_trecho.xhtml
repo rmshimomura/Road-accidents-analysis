@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<ui:composition template="./trechos.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+   <ui:define name="componenteTrecho">
+
+      <p:messages id="messages" showDetail="true" closable="true">
+         <p:autoUpdate/>
+      </p:messages>
+
+      <h:form id="trechos">
+
+         <h:panelGrid columns="5" cellpadding="5" style="margin: 0 auto;">
+            <p:outputLabel for="inputUF" value="UF" />
+            <p:selectOneMenu id="inputUF" value="#{trechoController.chosenUF}" required="true" onchange="#{trechoController.getRodoviasByUf()}">
+               <f:selectItem itemLabel="Todos os estados" itemValue="" itemDisabled="#{not empty trechoController.chosenUF}"/>
+               <p:ajax event="change" process="@this" update="trechos"/>
+               <f:selectItems value="#{trechoController.ufs}" />
+            </p:selectOneMenu>
+
+            <p:selectOneMenu id="input" value="#{trechoController.rodovia.nome}" required="true">
+               <f:selectItem itemLabel="Todas as rodovias" itemValue="" itemDisabled="#{not empty trechoController.availableRodovias}"/>
+               <f:selectItems value="#{trechoController.availableRodovias}" />
+            </p:selectOneMenu>
+
+
+            <p:commandButton update="trechos" value="Buscar"
+                             action="#{trechoController.buscar}">
+            </p:commandButton>
+
+         </h:panelGrid>
+
+         <p:dataTable id="finalConditions" value="" rendered="#{not empty trechoController.listaTrechos}">
+
+            <p:column headerText="Média ICC">
+               <p:outputLabel id="mediaICC" value="#{trechoController.mediaICC}" />
+            </p:column>
+
+            <p:column headerText="Média ICP">
+               <p:outputLabel id="mediaICP" value="#{trechoController.mediaICP}" />
+            </p:column>
+
+            <p:column headerText="Média ICM">
+               <p:outputLabel id="mediaICM" value="#{trechoController.mediaICM}" />
+            </p:column>
+
+         </p:dataTable>
+
+         <p:dataTable id="tabelaTrechos" var="trecho"
+                      value="#{trechoController.listaTrechos}"
+                      rendered="#{not empty trechoController.listaTrechos}"
+                      paginator="true" rows="15"
+                      paginatorTemplate="{FirstPageLink}
+             		{PreviousPageLink} {PageLinks} {NextPageLink}
+             		{LastPageLink} {RowsPerPageDropdown}"
+                      draggableColumns="true"
+                      paginatorPosition="bottom"
+                      rowsPerPageTemplate="5,10,15,20,25,30,35,40,45,50,100">
+
+            <p:column headerText="Rodovia">
+               <p:outputLabel id="rodoviaNome" value="#{trechoController.rodovia.nome}/#{trechoController.tempUF}" />
+            </p:column>
+
+            <p:column headerText="Kms cobertos">
+               <p:outputLabel id="kmsTrecho" value="[#{trecho.kmInicial} - #{trecho.kmFinal}]" />
+            </p:column>
+
+            <p:column headerText="Data avaliação">
+               <p:outputLabel id="DataAvaliacao" value="#{trecho.dataAvaliacao}" />
+            </p:column>
+
+            <p:column headerText="Condições de conservação">
+               <p:outputLabel id="trecho" value="ICC: #{trecho.ICC} ICP: #{trecho.ICP} ICM: #{trecho.ICM}" />
+            </p:column>
+
+         </p:dataTable>
+
+
+      </h:form>
+
+   </ui:define>
+
+</ui:composition>
