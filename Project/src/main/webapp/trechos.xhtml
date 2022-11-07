@@ -15,25 +15,28 @@
 
     <h1 style="text-align: center">Buscar trechos</h1>
 
-    <h:form id="barraDeFerramentas">
+    <div style="padding: 2em">
 
-        <p:toolbar>
-            <p:toolbarGroup>
+        <h:form id="barraDeFerramentas">
 
-                <div style="text-align: center;">
-                    <p:commandButton value="Procurar trechos de uma rodovia" action="procurar_trecho.xhtml" ajax="false"/>
-                    <p:commandButton value="Estatísticas sobre trechos" action="estatisticas_trechos.xhtml" ajax="false" />
-                    <p:commandButton value="Retornar aos menus" action="index.xhtml" ajax="false" />
-                </div>
+            <p:toolbar>
+                <p:toolbarGroup>
 
-            </p:toolbarGroup>
-        </p:toolbar>
-    </h:form>
+                    <div style="text-align: center;">
+                        <p:commandButton value="Procurar trechos de uma rodovia" action="procurar_trecho.xhtml" ajax="false" style="margin-right: .5em"/>
+                        <p:commandButton value="Estatísticas sobre trechos" action="estatisticas_trechos.xhtml" ajax="false" style="margin-right: .5em"/>
+                        <p:commandButton value="Retornar aos menus" action="index.xhtml" ajax="false" style="margin-right: .5em"/>
+                    </div>
 
-    <div>
-        <ui:insert name="componenteTrecho" />
+                </p:toolbarGroup>
+            </p:toolbar>
+        </h:form>
+
+        <div>
+            <ui:insert name="componenteTrecho" />
+        </div>
+
     </div>
-
 
 </h:body>
 </html>
