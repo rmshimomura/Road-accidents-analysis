@@ -23,6 +23,11 @@ import java.util.Scanner;
 @RequestScoped
 @Controller
 public class UploadFilesController implements Serializable {
+
+    private String tipoDeArquivo;
+
+    private Integer tuplasCarregadas;
+
     private List<VeiculoAcidenteSemCasualidade> createVeiculosAcidenteSc(Long id, String [] contents){
 
         List<VeiculoAcidenteSemCasualidade> veiculos = new ArrayList<>();
@@ -93,17 +98,28 @@ public class UploadFilesController implements Serializable {
         return casualidades;
     }
 
-    public void parseAcidente(FileUploadEvent event){
-        UploadedFile file = event.getFile();
+    public void parseFile(FileUploadEvent event) {
 
-        FacesMessage message;
+        tuplasCarregadas = 0;
 
-        if (file != null) {
-            message = new FacesMessage(file.getFileName() + " uploaded.");
+        if (tipoDeArquivo == null || tipoDeArquivo.equals("")) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Selecione o tipo de arquivo!"));
+        } else if (tipoDeArquivo.equals("acidentes")){
+
+            parseAcidente(event);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, null, "Arquivo " + event.getFile().getFileName() + " processado com sucesso, " + tuplasCarregadas + " tuplas carregadas!"));
+        } else if (tipoDeArquivo.equals("pavimento")) {
+            parseRodoviasETrechos(event);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, null, "Arquivo " + event.getFile().getFileName() + " processado com sucesso, " + tuplasCarregadas + " tuplas carregadas!"));
         } else {
-            message = new FacesMessage("Upload failed.");
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Tipo de arquivo inválido!"));
         }
-        FacesContext.getCurrentInstance().addMessage(null, message);
+
+    }
+
+    public void parseAcidente(FileUploadEvent event){
+
+        UploadedFile file = event.getFile();
 
         LogCargas log = new LogCargas();
         log.setTuplasCarregadas(0);
@@ -197,18 +213,9 @@ public class UploadFilesController implements Serializable {
             e.printStackTrace();
         }
     }
-    public void parseFile(FileUploadEvent event) {
+    public void parseRodoviasETrechos(FileUploadEvent event) {
 
         UploadedFile file = event.getFile();
-
-        FacesMessage message;
-
-        if (file != null) {
-            message = new FacesMessage(file.getFileName() + " uploaded.");
-        } else {
-            message = new FacesMessage("Upload failed.");
-        }
-        FacesContext.getCurrentInstance().addMessage(null, message);
 
         LogCargas log = new LogCargas();
         log.setTuplasCarregadas(0);
@@ -298,11 +305,23 @@ public class UploadFilesController implements Serializable {
             e.printStackTrace();
         }
 
+        tuplasCarregadas = log.getTuplasCarregadas();
+
     }
 
-    public void handleFileUpload(FileUploadEvent event) {
-        System.out.println("File uploaded");
-        FacesMessage message = new FacesMessage(event.getFile().getFileName() + " is uploaded.");
-        FacesContext.getCurrentInstance().addMessage(null, message);
+    public String getTipoDeArquivo() {
+        return tipoDeArquivo;
+    }
+
+    public void setTipoDeArquivo(String tipoDeArquivo) {
+        this.tipoDeArquivo = tipoDeArquivo;
+    }
+
+    public Integer getTuplasCarregadas() {
+        return tuplasCarregadas;
+    }
+
+    public void setTuplasCarregadas(Integer tuplasCarregadas) {
+        this.tuplasCarregadas = tuplasCarregadas;
     }
 }

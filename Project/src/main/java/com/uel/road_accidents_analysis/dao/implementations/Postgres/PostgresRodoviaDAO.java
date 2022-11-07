@@ -27,8 +27,8 @@ public class PostgresRodoviaDAO implements RodoviaDAO {
 
             prstate.execute();
         } catch (SQLException e) {
-            //System.err.println(e.getMessage());
-            //throw new SQLException("Erro ao inserir rodovia");
+//            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao inserir rodovia");
         }
 
     }
