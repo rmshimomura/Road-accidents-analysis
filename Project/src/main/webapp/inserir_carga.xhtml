@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<ui:composition template="./carga.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="componente">
+
+        <div style="padding: 2em">
+
+            <h:form enctype="multipart/form-data" id="formEnviar">
+                <p:outputLabel value="Tipo de Carga" for="fileTypeChoose" />
+                <p:selectOneRadio id="fileTypeChoose" value="#{uploadFilesController.tipoDeArquivo}" required="true" requiredMessage="Selecione o tipo de arquivo!">
+                    <f:selectItem itemLabel="Arquivo de condições de pavimento" itemValue="pavimento" />
+                    <f:selectItem itemLabel="Arquivo de acidentes" itemValue="acidentes" />
+                    <f:ajax event="change" update="formEnviar" />
+                </p:selectOneRadio>
+                <p:fileUpload listener="#{uploadFilesController.parseFile}" mode="advanced" dragDropSupport="false"
+                              update="messages"/>
+                <p:messages id="messages" showDetail="true" closable="true">
+                    <p:autoUpdate/>
+                </p:messages>
+            </h:form>
+
+        </div>
+
+    </ui:define>
+
+</ui:composition>

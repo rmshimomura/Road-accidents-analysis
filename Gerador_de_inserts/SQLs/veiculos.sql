@@ -1,0 +1,10 @@
+INSERT INTO Veiculo VALUES ('automovel');
+INSERT INTO Veiculo VALUES ('bicicleta');
+INSERT INTO Veiculo VALUES ('caminhao');
+INSERT INTO Veiculo VALUES ('moto');
+INSERT INTO Veiculo VALUES ('onibus');
+INSERT INTO Veiculo VALUES ('outros');
+INSERT INTO Veiculo VALUES ('tracao_animal');
+INSERT INTO Veiculo VALUES ('transporte_de_cargas_especiais');
+INSERT INTO Veiculo VALUES ('trator_maquinas');
+INSERT INTO Veiculo VALUES ('utilitarios');
