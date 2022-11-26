@@ -22,6 +22,7 @@ public class PostgresVeiculoAcidenteSemCasualidadeDAO implements VeiculoAcidente
     public void insert(VeiculoAcidenteSemCasualidade veiculoAcidenteSemCasualidade) throws SQLException {
 
         String sql = "INSERT INTO veiculo_acidente_sc (id_acidente_sc, id_veiculo, quantidade) VALUES (?, ?, ?)";
+        //print prepared statement
 
         try (PreparedStatement prstate = connection.prepareStatement(sql)) {
             prstate.setLong(1, veiculoAcidenteSemCasualidade.getIdAcidenteSemCasualidade());
@@ -128,6 +129,24 @@ public class PostgresVeiculoAcidenteSemCasualidadeDAO implements VeiculoAcidente
 
     }
 
+    @Override
+    public int getCount() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM veiculo_acidente_sc";
+        int count = 0;
+
+        try (PreparedStatement prstate = connection.prepareStatement(sql)) {
+            prstate.executeQuery();
+
+            while (prstate.getResultSet().next()) {
+                count = prstate.getResultSet().getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao buscar quantidade de acidentes sem casualidade");
+        }
+
+        return count;
+    }
 
 
 }

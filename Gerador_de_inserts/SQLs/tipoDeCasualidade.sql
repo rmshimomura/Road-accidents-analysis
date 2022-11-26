@@ -1,5 +1,5 @@
-INSERT INTO TipoDeCasualidade VALUES ('ilesos');
-INSERT INTO TipoDeCasualidade VALUES ('levemente_feridos');
-INSERT INTO TipoDeCasualidade VALUES ('moderadamente_feridos');
-INSERT INTO TipoDeCasualidade VALUES ('gravemente_feridos');
-INSERT INTO TipoDeCasualidade VALUES ('mortos');
+INSERT INTO Tipo_Casualidade(nome_casualidade) VALUES ('ilesos');
+INSERT INTO Tipo_Casualidade(nome_casualidade) VALUES ('levemente_feridos');
+INSERT INTO Tipo_Casualidade(nome_casualidade) VALUES ('moderadamente_feridos');
+INSERT INTO Tipo_Casualidade(nome_casualidade) VALUES ('gravemente_feridos');
+INSERT INTO Tipo_Casualidade(nome_casualidade) VALUES ('mortos');
