@@ -128,6 +128,24 @@ public class PostgresVeiculoAcidenteComCasualidadeDAO implements VeiculoAcidente
 
     }
 
+    @Override
+    public int getCount() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM veiculo_acidente_cc";
+        int count = 0;
+
+        try (PreparedStatement prstate = connection.prepareStatement(sql)) {
+            prstate.executeQuery();
+
+            while (prstate.getResultSet().next()) {
+                count = prstate.getResultSet().getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao buscar quantidade de acidentes sem casualidade");
+        }
+
+        return count;
+    }
 
 
 }

@@ -132,6 +132,25 @@ public class PostgresTrechoDAO implements TrechoDAO {
     }
 
     @Override
+    public int getCount() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM trecho";
+        int count = 0;
+
+        try (PreparedStatement prstate = connection.prepareStatement(sql)) {
+            prstate.executeQuery();
+
+            while (prstate.getResultSet().next()) {
+                count = prstate.getResultSet().getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao buscar quantidade de acidentes sem casualidade");
+        }
+
+        return count;
+    }
+
+    @Override
     public Trecho getTrechoByRodoviaKmAndData(Long idRodovia, Double km, java.util.Date dataAvaliacao) throws java.sql.SQLException{
 
         String sql = "SELECT * FROM trecho WHERE id_rodovia = ? AND km_inicial <= ? AND km_final >= ? ORDER BY ABS(data_avaliacao - TO_DATE(?, 'YYYY-MM-DD')) LIMIT 1";
