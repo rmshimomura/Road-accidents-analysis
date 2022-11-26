@@ -103,4 +103,23 @@ public class PostgresTipoCasualidadeDAO implements TipoCasualidadeDAO {
         return tipoCasualidades;
     }
 
+    @Override
+    public int getCount() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM tipo_casualidade";
+        int count = 0;
+
+        try (PreparedStatement prstate = connection.prepareStatement(sql)) {
+            prstate.executeQuery();
+
+            while (prstate.getResultSet().next()) {
+                count = prstate.getResultSet().getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao buscar quantidade de tipos de casualidade");
+        }
+
+        return count;
+    }
+
 }

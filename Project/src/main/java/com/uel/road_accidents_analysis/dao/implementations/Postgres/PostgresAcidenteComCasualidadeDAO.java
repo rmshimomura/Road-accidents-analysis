@@ -122,6 +122,25 @@ public class PostgresAcidenteComCasualidadeDAO implements AcidenteComCasualidade
     }
 
     @Override
+    public int getCount() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM Acidente_cc";
+        int count = 0;
+
+        try (PreparedStatement prstate = connection.prepareStatement(sql)) {
+            prstate.executeQuery();
+
+            while (prstate.getResultSet().next()) {
+                count = prstate.getResultSet().getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao buscar quantidade de acidentes sem casualidade");
+        }
+
+        return count;
+    }
+
+    @Override
     public AcidenteComCasualidade getByTrechoHorarioDataAndKm(Long idTrecho, java.util.Date data, Time horario, Double km) throws SQLException {
         String sql = "SELECT * FROM Acidente_cc WHERE id_trecho = ? AND data_acidente = ? AND horario = ? AND km_acidente = ?";
 

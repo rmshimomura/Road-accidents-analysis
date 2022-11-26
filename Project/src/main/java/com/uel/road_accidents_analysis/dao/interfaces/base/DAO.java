@@ -9,4 +9,5 @@ public interface DAO <T> {
     void delete(T t) throws SQLException;
     T getById(Long id) throws SQLException;
     List<T> getAll() throws SQLException;
+    int getCount() throws SQLException;
 }

@@ -27,7 +27,6 @@ public class PostgresAcidenteSemCasualidadeDAO implements AcidenteSemCasualidade
             prstate.setString(6, acidenteSemCasualidade.getTipo());
 
             //print prepared statement
-
             prstate.execute();
         } catch (SQLException e) {
             //System.err.println(e.getMessage());
@@ -121,6 +120,25 @@ public class PostgresAcidenteSemCasualidadeDAO implements AcidenteSemCasualidade
         }
 
         return acidentesSemCasualidade;
+    }
+
+    @Override
+    public int getCount() throws SQLException {
+        String sql = "SELECT COUNT(*) FROM Acidente_sc";
+        int count = 0;
+
+        try (PreparedStatement prstate = connection.prepareStatement(sql)) {
+            prstate.executeQuery();
+
+            if (prstate.getResultSet().next()) {
+                count = prstate.getResultSet().getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao buscar quantidade de acidentes sem casualidade");
+        }
+
+        return count;
     }
 
     @Override
