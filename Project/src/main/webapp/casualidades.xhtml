@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+   <title>Análise das rodovias</title>
+</h:head>
+
+<h:body>
+
+   <h1 style="text-align: center">Buscar estatísticas sobre casualidades</h1>
+
+   <div style="padding: 2em">
+
+      <h:form id="barraDeFerramentas">
+
+         <p:toolbar>
+            <p:toolbarGroup>
+
+               <div style="text-align: center;">
+                  <p:commandButton value="Buscar" action="grafico_casualidade_no_acidente.xhtml" ajax="false" style="margin-right: .5em"/>
+                  <p:commandButton value="Retornar aos menus" action="index.xhtml" ajax="false" style="margin-right: .5em"/>
+               </div>
+
+            </p:toolbarGroup>
+         </p:toolbar>
+      </h:form>
+
+      <div>
+         <ui:insert name="componenteCasualidade" />
+      </div>
+
+   </div>
+
+</h:body>
+</html>
