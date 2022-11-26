@@ -118,7 +118,7 @@ public class PostgresVeiculoDAO implements VeiculoDAO {
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
-            throw new SQLException("Erro ao buscar quantidade de acidentes sem casualidade");
+            throw new SQLException("Erro ao buscar quantidade de veiculos");
         }
 
         return count;

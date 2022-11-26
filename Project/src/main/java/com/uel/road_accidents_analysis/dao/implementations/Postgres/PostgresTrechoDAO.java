@@ -237,7 +237,7 @@ public class PostgresTrechoDAO implements TrechoDAO {
 
         } catch (SQLException e) {
             System.err.println(e.getMessage());
-            throw new SQLException("Erro ao buscar rodovias");
+            throw new SQLException("Erro ao buscar Ufs");
         }
 
 

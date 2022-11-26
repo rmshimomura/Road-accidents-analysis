@@ -2,6 +2,7 @@ package com.uel.road_accidents_analysis.dao.implementations.Postgres;
 
 import com.uel.road_accidents_analysis.dao.interfaces.custom.VeiculoAcidenteSemCasualidadeDAO;
 import com.uel.road_accidents_analysis.model.VeiculoAcidenteSemCasualidade;
+import com.uel.road_accidents_analysis.model.query_aux.VeiculoCount;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -142,10 +143,36 @@ public class PostgresVeiculoAcidenteSemCasualidadeDAO implements VeiculoAcidente
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
-            throw new SQLException("Erro ao buscar quantidade de acidentes sem casualidade");
+            throw new SQLException("Erro ao buscar quantidade de veiculos sem casualidade");
         }
 
         return count;
+    }
+
+    @Override
+    public List<VeiculoCount> count_groups() throws SQLException {
+
+        String sql = "SELECT SUM(vas.quantidade), v.nome_veiculo FROM veiculo_acidente_sc vas INNER JOIN veiculo v ON vas.id_veiculo = v.id_veiculo GROUP BY v.nome_veiculo order by v.nome_veiculo";
+
+        try (PreparedStatement prstate = connection.prepareStatement(sql)) {
+            ResultSet rs = prstate.executeQuery();
+
+            List<VeiculoCount> veiculoCounts = new ArrayList<>();
+
+            while (rs.next()) {
+                VeiculoCount veiculoCount = new VeiculoCount();
+                veiculoCount.setQuantidade(rs.getInt("sum"));
+                veiculoCount.setNomeVeiculo(rs.getString("nome_veiculo"));
+
+                veiculoCounts.add(veiculoCount);
+            }
+
+            return veiculoCounts;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao buscar veiculo_acidente_cc");
+        }
+
     }
 
 
