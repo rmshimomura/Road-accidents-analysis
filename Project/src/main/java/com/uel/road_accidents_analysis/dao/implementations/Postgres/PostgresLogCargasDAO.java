@@ -90,7 +90,7 @@ public class PostgresLogCargasDAO implements LogCargasDAO {
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
-            throw new SQLException("Erro ao buscar quantidade de acidentes sem casualidade");
+            throw new SQLException("Erro ao buscar quantidade de logs");
         }
 
         return count;
