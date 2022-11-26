@@ -2,6 +2,7 @@ package com.uel.road_accidents_analysis.dao.implementations.Postgres;
 
 import com.uel.road_accidents_analysis.dao.interfaces.custom.CasualidadeNoAcidenteDAO;
 import com.uel.road_accidents_analysis.model.CasualidadeNoAcidente;
+import com.uel.road_accidents_analysis.model.CasualidadeNoAcidenteTotal;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -103,6 +104,36 @@ public class PostgresCasualidadeNoAcidenteDAO implements CasualidadeNoAcidenteDA
             throw new SQLException("Erro ao buscar casualidade no acidente");
         }
 
+    }
+
+    @Override
+    public List<CasualidadeNoAcidenteTotal> getSumCasualidadesBySeverity() throws SQLException {
+        List<CasualidadeNoAcidenteTotal> result = new ArrayList<>();
+
+        String sql = "SELECT sum(c.quantidade) as total, " +
+                "t.nome_casualidade, " +
+                "t.id_tipo_casualidade " +
+                "FROM casualidade_acidente c " +
+                "INNER JOIN tipo_casualidade t " +
+                "ON c.id_tipo_casualidade = t.id_tipo_casualidade " +
+                "GROUP BY t.id_tipo_casualidade " +
+                "ORDER BY id_tipo_casualidade";
+
+        try (PreparedStatement prstate = connection.prepareStatement(sql)) {
+            ResultSet rs = prstate.executeQuery();
+
+            while (rs.next()) {
+                CasualidadeNoAcidenteTotal casualidadeNoAcidenteTotal = new CasualidadeNoAcidenteTotal();
+                casualidadeNoAcidenteTotal.setTotal(rs.getInt("total"));
+                casualidadeNoAcidenteTotal.setNomeCasualidade(rs.getString("nome_casualidade"));
+                result.add(casualidadeNoAcidenteTotal);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao buscar total de casualidades por gravidade");
+        }
+
+        return result;
     }
 
     @Override
