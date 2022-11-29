@@ -2,6 +2,7 @@ package com.uel.road_accidents_analysis.dao.implementations.Postgres;
 
 import com.uel.road_accidents_analysis.dao.interfaces.custom.AcidenteSemCasualidadeDAO;
 import com.uel.road_accidents_analysis.model.AcidenteSemCasualidade;
+import com.uel.road_accidents_analysis.model.query_aux.AcidentesRodoviaCount;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -171,5 +172,35 @@ public class PostgresAcidenteSemCasualidadeDAO implements AcidenteSemCasualidade
         }
 
         return null;
+    }
+
+    @Override
+    public List<AcidentesRodoviaCount> getCountAcidentesForEachRodovia() throws SQLException {
+        String sql = "SELECT COUNT(*), " +
+                "rod.nome_rodovia " +
+                "FROM acidente_sc a_sc " +
+                "INNER JOIN trecho t " +
+                "ON a_sc.id_trecho = t.id_trecho " +
+                "INNER JOIN rodovia rod " +
+                "ON rod.id_rodovia = t.id_rodovia " +
+                "GROUP BY rod.id_rodovia";
+
+        List<AcidentesRodoviaCount> acidentesRodoviaCount = new ArrayList<AcidentesRodoviaCount>();
+
+        try (PreparedStatement prstate = connection.prepareStatement(sql)) {
+            prstate.executeQuery();
+
+            while (prstate.getResultSet().next()) {
+                AcidentesRodoviaCount acidentesRodovia = new AcidentesRodoviaCount();
+                acidentesRodovia.setCount(prstate.getResultSet().getInt(1));
+                acidentesRodovia.setNomeRodovia(prstate.getResultSet().getString(2));
+                acidentesRodoviaCount.add(acidentesRodovia);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao buscar acidentes por rodovia");
+        }
+
+        return acidentesRodoviaCount;
     }
 }
