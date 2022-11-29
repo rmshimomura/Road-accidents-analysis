@@ -2,6 +2,7 @@ package com.uel.road_accidents_analysis.dao.implementations.Postgres;
 
 import com.uel.road_accidents_analysis.dao.interfaces.custom.RodoviaDAO;
 import com.uel.road_accidents_analysis.model.Rodovia;
+import com.uel.road_accidents_analysis.model.query_aux.AveragePerState;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -267,6 +268,48 @@ public class PostgresRodoviaDAO implements RodoviaDAO {
         }
 
         return rodovias;
+
+    }
+
+    @Override
+    public List<AveragePerState> getStateAverages() throws SQLException {
+
+        List<AveragePerState> averages = new ArrayList<>();
+
+        String sql = "SELECT rod.uf, \n" +
+                "ROUND(AVG(t.icm)::numeric,2) as icm_medio,\n" +
+                "ROUND(AVG(t.icp)::numeric,2) as icp_medio,\n" +
+                "ROUND(AVG(t.icc)::numeric,2) as icc_medio\n" +
+                "FROM rodovia rod\n" +
+                "INNER JOIN trecho t\n" +
+                "ON rod.id_rodovia = t.id_rodovia\n" +
+                "GROUP BY rod.uf;";
+
+        try {
+            PreparedStatement prstate = connection.prepareStatement(sql);
+
+            ResultSet result = prstate.executeQuery();
+
+            while (result.next()) {
+                AveragePerState average = new AveragePerState();
+                average.setUf(result.getString("uf"));
+                average.setIccAverage(result.getDouble("icc_medio"));
+                average.setIcmAverage(result.getDouble("icm_medio"));
+                average.setIcpAverage(result.getDouble("icp_medio"));
+
+                averages.add(average);
+            }
+
+            result.close();
+            prstate.close();
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new SQLException("Erro ao buscar rodovias");
+
+        }
+
+        return averages;
 
     }
 
