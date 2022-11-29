@@ -3,12 +3,10 @@ package com.uel.road_accidents_analysis.controllers;
 import com.uel.road_accidents_analysis.dao.factories.DAOFactory;
 import com.uel.road_accidents_analysis.dao.interfaces.custom.VeiculoAcidenteComCasualidadeDAO;
 import com.uel.road_accidents_analysis.dao.interfaces.custom.VeiculoAcidenteSemCasualidadeDAO;
-import com.uel.road_accidents_analysis.model.VeiculoAcidenteSemCasualidade;
 import com.uel.road_accidents_analysis.model.query_aux.VeiculoCount;
 import org.primefaces.model.chart.PieChartModel;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Named;
 import java.io.Serializable;
