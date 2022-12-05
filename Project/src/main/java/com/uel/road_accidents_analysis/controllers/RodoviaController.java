@@ -28,33 +28,33 @@ public class RodoviaController {
 
     private String chosenUF;
 
-    private LineChartModel avgIcc;
+    private BarChartModel avgIcc;
 
-    private LineChartModel avgIcm;
+    private BarChartModel avgIcm;
 
-    private LineChartModel avgIcp;
+    private BarChartModel avgIcp;
 
-    public LineChartModel getAvgIcc() {
+    public BarChartModel getAvgIcc() {
         return avgIcc;
     }
 
-    public void setAvgIcc(LineChartModel avgIcc) {
+    public void setAvgIcc(BarChartModel avgIcc) {
         this.avgIcc = avgIcc;
     }
 
-    public LineChartModel getAvgIcm() {
+    public BarChartModel getAvgIcm() {
         return avgIcm;
     }
 
-    public void setAvgIcm(LineChartModel avgIcm) {
+    public void setAvgIcm(BarChartModel avgIcm) {
         this.avgIcm = avgIcm;
     }
 
-    public LineChartModel getAvgIcp() {
+    public BarChartModel getAvgIcp() {
         return avgIcp;
     }
 
-    public void setAvgIcp(LineChartModel avgIcp) {
+    public void setAvgIcp(BarChartModel avgIcp) {
         this.avgIcp = avgIcp;
     }
 
@@ -157,9 +157,9 @@ public class RodoviaController {
 
     public void createBarModels() {
 
-        avgIcc = new LineChartModel();
-        avgIcm = new LineChartModel();
-        avgIcp = new LineChartModel();
+        avgIcc = new BarChartModel();
+        avgIcm = new BarChartModel();
+        avgIcp = new BarChartModel();
 
         ChartSeries avgIccSeries = new ChartSeries();
         ChartSeries avgIcmSeries = new ChartSeries();
