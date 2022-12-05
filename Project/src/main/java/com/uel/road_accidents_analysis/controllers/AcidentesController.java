@@ -5,6 +5,7 @@ import com.uel.road_accidents_analysis.model.query_aux.AcidentesRodoviaCount;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.charts.optionconfig.title.Title;
 
 
 import javax.annotation.PostConstruct;
@@ -39,6 +40,7 @@ public class AcidentesController {
 
             ChartSeries acidentes = new ChartSeries();
             acidentes.setLabel("Acidentes");
+            acidentesComparativoBarChart.setTitle("Comparativo de Acidentes com e sem Casualidades");
             acidentes.set("Sem Casualidades", acidentes_sc_count);
             acidentes.set("Com Casualidades", acidentes_cc_count);
             acidentes.set("Total", acidentes_sc_count + acidentes_cc_count);
@@ -59,6 +61,8 @@ public class AcidentesController {
 
             ChartSeries acidentes = new ChartSeries();
             acidentes.setLabel("Acidentes sem casualidades por rodovia");
+            acidenteSCRodoviaBarChart.setTitle("Acidentes sem casualidades por rodovia");
+
             for (AcidentesRodoviaCount acidentesRodoviaCount : acidentesRodoviaCountList) {
                 acidentes.set(acidentesRodoviaCount.getNomeRodovia(), acidentesRodoviaCount.getCount());
             }
@@ -79,6 +83,8 @@ public class AcidentesController {
 
             ChartSeries acidentes = new ChartSeries();
             acidentes.setLabel("Acidentes com casualidades por rodovia");
+            acidenteCCRodoviaBarChart.setTitle("Acidentes com casualidades por rodovia");
+
             for (AcidentesRodoviaCount acidentesRodoviaCount : acidentesRodoviaCountList) {
                 acidentes.set(acidentesRodoviaCount.getNomeRodovia(), acidentesRodoviaCount.getCount());
             }
